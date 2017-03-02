@@ -1,0 +1,33 @@
+//Colors
+
+$colors: (
+
+purple: #89145C,
+lightPurple: #8C466D,
+orange: #F05014,
+lightOrange: #FF6E31
+
+);
+
+//Fonts
+
+$fonts: (
+text: "Raleway",
+headline: "Arima Madurai"
+);
+
+@font-face {
+    font-family: 'Kingthings';
+    src: url('../fonts/Kingthings_Calligraphica_2.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Rothenburg';
+    src: url('../fonts/rothenbg.ttf') format('truetype');
+}
+
+
+
+//Shadow
+
+$shadow : 2px 2px 20px 0px rgba(0,0,0,0.5);

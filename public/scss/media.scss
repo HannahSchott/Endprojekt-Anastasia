@@ -1,0 +1,240 @@
+
+
+@media screen and (max-width: 1133px){
+  .product-detail_image{
+align-self: center;
+  margin: 0px;
+  margin-bottom: 50px;
+
+  }
+
+  .product-detail_description{
+    flex-basis: 60%;
+  }
+
+  footer{
+    padding: 30px;
+    div{
+      width: calc(50vw - 30px);
+    }
+  }
+
+}
+
+@media screen and (max-width: 1069px){
+
+}
+
+@media screen and (max-width: 1050px){
+
+  .header-text{
+
+  top: 40px;
+  left: 40px;
+}
+
+.register-form {
+  margin: 10px 10px;
+  padding: 70px;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.5);
+}
+
+}
+
+@media screen and (max-width: 910px){
+
+  .abos{
+    flex-wrap: wrap;
+
+    div{
+      flex-basis: 60%;
+    }
+  }
+
+  .product-detail_comments{
+
+    margin: 0;
+    .comment{
+      img{
+        display: none;
+      }
+    }
+  }
+
+    .order .form-group{
+    width: 100%;
+  }
+
+  .answer-wrapper {
+    margin: 40% 11% 31% 16%;
+    height: 46%;
+  }
+}
+
+@media screen and (max-width: 846px){
+  .answer-wrapper {
+    margin: 35% 0% 33% 12%;
+    height: 48%;
+  }
+}
+
+@media screen and (max-width: 787px){
+
+  .answer-wrapper {
+    margin: 35% 10% 32% 12%;
+    height: 45%;
+  }
+
+  .answer-text{
+    font-size: 24pt;
+  }
+  .question-text{
+    font-size: 24pt;
+  }
+}
+
+@media screen and (max-width: 700px){
+
+  .header-text{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: calc(100% - 80px);
+  padding: 40px;
+  margin: 0;
+
+  top:0;
+  left: 0;
+  }
+
+  .products-sorting{
+      justify-content: center;
+      align-items: center;
+    ul{
+        flex-wrap: wrap;
+        width: calc(100% - 20px);
+        margin: 20px;
+        li{
+          width: 26%;
+        }
+    }
+   }
+
+   .answer-wrapper {
+     margin: 41% 18% 32% 11%;
+     height: 36%;
+
+     .page-3{
+      padding: 3px;
+     }
+
+     .page-5{
+       .answer-text{
+         font-size: 16pt;
+       }
+       .answer-img{
+         width: 29%;
+       }
+     }
+
+     .page-6{
+        height: 67%;
+
+       .answer-img{
+         width: 84%;
+       }
+
+     }
+
+     .page-7{
+       .anser-img{
+         height: 50%;
+         width: 43%;
+       }
+     }
+     .answer-text{
+       font-size: 20pt;
+     }
+   }
+}
+
+@media screen and (max-width: 590px){
+  .header-logo{
+    display: none;
+  }
+
+  .menu-button{
+    display: block;
+  }
+
+  .header-subnav{
+    height: 80px;
+  }
+  .header-subnav ul{
+    display: none;
+  }
+
+  .mobile-logo{
+    display: block;
+    height: 60px;
+    margin: 15px auto 0px;
+  }
+
+  .header-navigation{
+    display: none;
+  }
+
+  .abos div {
+    flex-basis: 100%;
+}
+
+  footer{
+    justify-content: center;
+  }
+
+  .answer-wrapper {
+    height: 35%;
+    .page-3{
+      width: 23%;
+    }
+
+    .page-4{
+      .answer-text{
+        font-size: 17pt;
+      }
+    }
+
+    .page-5{
+        width: 90%;
+      .answer-text{
+        font-size: 11pt;
+      }
+    }
+
+    .page-6{
+      width: 37%;
+    }
+
+    .page-7{
+        width: 44%;
+    }
+
+    .page-8{
+      height: 46%;
+      width: 42%;
+    }
+
+    .page-9{
+      height: 32%;
+      width: 34%;
+    }
+  }
+
+
+
+
+
+}
