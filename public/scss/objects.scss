@@ -930,56 +930,59 @@ box-shadow: $shadow;
 
 .login-wrapper{
   margin: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  background-color: map-get($colors, purple);
+  color: #fff;
+
+  width: 40%;
+  padding: 3em;
+
+  h3{
+    margin-bottom: 1em;
+  }
+
+  .form-group{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    background-color: map-get($colors, purple);
-    color: #fff;
 
-    width: 40%;
-    padding: 3em;
-
-    h3{
-      margin-bottom: 2em;
+    label{
+    visibility: hidden;
     }
 
-    .form-group{
-      display: flex;
-      flex-direction: column;
-      // margin-bottom: 40px;
-      label{
-      visibility: hidden;
-      }
-      input[type = 'email'], input[type = 'password']{
-        height: 60px;
-        width: 100%;
-        border: none;
-        font-size: 15pt;
+    input{
+      height: 3em;
+      width: 100%;
+      border: none;
+      font-size: 15pt;
+      background-color: map-get($colors, lightOrange);
+      color: #fff;
+
+      margin-bottom: 1em;
+      padding-left: 0.5em;
+    }
+
+  .button-login{
+      background-color: map-get($colors, orange);
+      color: #fff;
+      border-bottom: 0;
+      border: none;
+      font-size: 16px;
+      width: 150px;
+      height: 40px;
+      font-size: 13pt;
+      border-radius: 10px;
+      align-self: center;
+
+      margin-top: 1em;
+
+      &:hover{
         background-color: map-get($colors, lightOrange);
-        color: #fff;
-
-        margin-bottom: 2em;
-        padding-left: 0.5em;
       }
-
-      input[type = 'submit']
-      {
-        background-color: map-get($colors, orange);
-        color: #fff;
-        border-bottom: 0;
-        border: none;
-        font-size: 16px;
-        width: 150px;
-        height: 40px;
-        font-size: 13pt;
-        border-radius: 10px;
-        align-self: center;
-
-      }
-
-
     }
+  }
 }
 
 //Footer

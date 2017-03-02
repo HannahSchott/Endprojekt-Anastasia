@@ -8,14 +8,9 @@ class login extends controller{
         $this -> proceed();
       }
 
-      $form = new formbuilder("login", "1");
-
-//        -> addInput("submit", "register-confirm",false, array("value" => "registrieren"));
-      $form -> addInput("email", "email",true, array("placeholder" => "Emailadresse"))
-            -> addInput("password", "pw", true, array("placeholder" => "Passwort"))
-            -> addInput("submit", "dologin", true, array("value" => "login"));
-
-      $this -> view -> data['form'] = $form -> output();
+      $token = uniqid();
+      sessions::set('form-token', $token);
+      $this -> view -> data['token'] = $token;
 
       $this -> view -> render('login/index', $this -> view -> data);
 
