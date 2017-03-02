@@ -1,6 +1,6 @@
 <?php
 
-define("APP_ROOT", "http://localhost:8888/Anastasia/");
+define("APP_ROOT", "http://localhost:8888/Endprojekt-Anastasia/");
 define("APP_CONTROLLERS", "controllers/");
 define("APP_VIEWS", "views/");
 define("APP_MODELS", "models/");
