@@ -9,17 +9,9 @@ class products_model extends model{
     return $res -> fetch_all(MYSQLI_ASSOC);
   }
 
-  public function getAllProductsBackend()
-  {
-
-    $res = $this -> db -> query("SELECT products.id, products.slug, products.main_img, products.name as product_name, products.price, categories.name as categorie_name FROM products LEFT JOIN categories ON products.`categories-id` = categories.id");
-
-    return $res -> fetch_all(MYSQLI_ASSOC);
-  }
-
   public function getProduct($product_id)
   {
-    $res = $this -> db -> query("SELECT name ,slug, main_img, comments_rating, description, product_link, price FROM products WHERE id = '$product_id' LIMIT 1");
+    $res = $this -> db -> query("SELECT name ,slug, main_img, comments_rating, description, product_link, price, month_id FROM products WHERE id = '$product_id' LIMIT 1");
 
     return $res -> fetch_assoc();
   }
@@ -59,5 +51,20 @@ class products_model extends model{
     $stmt -> bind_param("isis", $user_id, $content, $product_id, $created_at);
 
     $stmt -> execute();
+  }
+
+  public function getAllProductsBackend()
+  {
+
+    $res = $this -> db -> query("SELECT products.id, products.slug, products.main_img, products.name as product_name, products.price, categories.name as categorie_name FROM products LEFT JOIN categories ON products.`categories-id` = categories.id");
+
+    return $res -> fetch_all(MYSQLI_ASSOC);
+  }
+
+  public function getProductCategorie($product_id)
+  {
+    $res = $this -> db -> query("SELECT products.`categories-id` , categories.name as categorie_name FROM products LEFT JOIN categories ON products.`categories-id` = categories.id WHERE products.id = '1' LIMIT 1");
+
+    return $res -> fetch_assoc();
   }
 }

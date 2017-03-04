@@ -11,20 +11,26 @@ class products extends controller{
 
   public function edit($product_id)
   {
-    $this -> view -> data['product'] = $this -> model -> getProduct($product_id);
 
-    $form = new formbuilder('edit', 2);
+    if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST)) {
+        $this -> save_edit();
+    }
+    $product_categorie = $this -> model ->  getProductCategorie($product_id);
+    $product = $this -> model -> getProduct($product_id);
+    $categories = $this -> model -> getAllCategoeries();
+    $this -> view -> data['product'] = $product;
 
-    $form -> addInput("text", "label_name", "Firmen Name")
-          -> addInput("text", "product_name", "Produkt Name")
-          -> addTextarea("decription", "Beschreibung", $value = "", $attr = array())
-          -> addInput("file", "picture", "Bild")
-          -> addButton("submit", "speichern", array("class" => "register-button"));
 
-          // ($type = "text", $name = "", $label = false, $attr = array())
+    foreach($categories as $categorie){
 
-    $this -> view -> data['form'] = $form -> output();
+    }
+
 
     $this -> view -> render('products/edit', $this -> view -> data, $includeAll = false);
+  }
+
+  public function save_edit()
+  {
+
   }
 }
