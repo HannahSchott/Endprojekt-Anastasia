@@ -1371,7 +1371,7 @@ transition: transform 0.4s ease;
 //Backend
 
 .backend-wrapper{
-  margin: 100px 100px;
+  margin: 70px 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1383,7 +1383,7 @@ transition: transform 0.4s ease;
 }
 
 .backend_menu{
-  margin-top: 80px;
+  margin-top: 50px;
   width: 80vw;
   display: flex;
   justify-content: space-around;
@@ -1395,6 +1395,7 @@ transition: transform 0.4s ease;
   color: #fff;
   padding: 10px;
   border-radius: 7px;
+  border: 0;
 
   &:hover{
     cursor: pointer;
@@ -1435,41 +1436,70 @@ transition: transform 0.4s ease;
 	}
 }
 
-#form-edit{
-  .edit{
 
+.backend-form{
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  .form-group{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
 
+    margin-bottom: 1em;
+    width: 50vw;
 
-    .form-group{
-      display: flex;
-      flex-direction: column;
-      flex-wrap:wrap;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      flex-direction: column;
-       width: 80vw;
-    }
     label{
-
+      font-size: 13pt;
+      font-family: map-get($fonts, headline);
+      color: map-get($colors, orange);
     }
-      input, textarea{
-        text-align: center;
-        margin: 10px;
-        width: 40%;
-        height: 2em;
+    input,textarea, select{
+      font-size: 12pt;
+      padding-left: 0.5em;
+    }
 
-        font-size: 13pt;
+    select{
+      background-image: url('../img/select-arrow.png');
+      background-position: 118px 15px;
+      background-repeat: no-repeat;
+      background-size: 26px;
 
-      }
-      textarea{
-        padding: 1em;
-        height: 10em;
+      background-color: map-get($colors, orange);
+      width: 154px;
+      height: 40px;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #fff;
+      line-height: 1;
+      border: 0;
+      border-radius: 0;
+
+      -webkit-appearance: none;
+      &:hover{
+          cursor: pointer;
       }
     }
+    textarea{
+      padding: 0.5em;
+    }
+    input{
+      height: 2.5em;
+    }
+
+    .infotext{
+
+      color: map-get($colors, orange);
+    }
+
+    p{
+      font-size: 12pt;
+      margin-bottom: 0.3em;
+    }
+  }
 }
 
 

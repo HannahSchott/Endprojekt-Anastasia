@@ -63,8 +63,15 @@ class products_model extends model{
 
   public function getProductCategorie($product_id)
   {
-    $res = $this -> db -> query("SELECT products.`categories-id` , categories.name as categorie_name FROM products LEFT JOIN categories ON products.`categories-id` = categories.id WHERE products.id = '1' LIMIT 1");
+    $res = $this -> db -> query("SELECT categories.name as categorie_name FROM products LEFT JOIN categories ON products.`categories-id` = categories.id WHERE products.id = '$product_id' LIMIT 1");
 
     return $res -> fetch_assoc();
+  }
+
+  public function getAllCategoriesBackend()
+  {
+    $res = $this -> db -> query("SELECT name FROM categories");
+
+    return $res -> fetch_all(MYSQLI_ASSOC);
   }
 }

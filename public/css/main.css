@@ -957,7 +957,7 @@ footer {
   font-size: 30pt; }
 
 .backend-wrapper {
-  margin: 100px 100px;
+  margin: 70px 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -966,7 +966,7 @@ footer {
     margin-bottom: 2em; }
 
 .backend_menu {
-  margin-top: 80px;
+  margin-top: 50px;
   width: 80vw;
   display: flex;
   justify-content: space-around; }
@@ -975,7 +975,8 @@ footer {
   background-color: #89145C;
   color: #fff;
   padding: 10px;
-  border-radius: 7px; }
+  border-radius: 7px;
+  border: 0; }
   .backend-button:hover {
     cursor: pointer;
     background-color: #F05014; }
@@ -998,28 +999,50 @@ footer {
     min-height: 4em;
     border-bottom: 1px solid #89145C; }
 
-#form-edit .edit {
+.backend-form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
-  #form-edit .edit .form-group {
+  justify-content: center;
+  align-items: center; }
+  .backend-form .form-group {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    width: 80vw; }
-  #form-edit .edit input, #form-edit .edit textarea {
-    text-align: center;
-    margin: 10px;
-    width: 40%;
-    height: 2em;
-    font-size: 13pt; }
-  #form-edit .edit textarea {
-    padding: 1em;
-    height: 10em; }
+    justify-content: flex-start;
+    margin-bottom: 1em;
+    width: 50vw; }
+    .backend-form .form-group label {
+      font-size: 13pt;
+      font-family: "Arima Madurai";
+      color: #F05014; }
+    .backend-form .form-group input, .backend-form .form-group textarea, .backend-form .form-group select {
+      font-size: 12pt;
+      padding-left: 0.5em; }
+    .backend-form .form-group select {
+      background-image: url("../img/select-arrow.png");
+      background-position: 118px 15px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+      background-color: #F05014;
+      width: 154px;
+      height: 40px;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #fff;
+      line-height: 1;
+      border: 0;
+      border-radius: 0;
+      -webkit-appearance: none; }
+      .backend-form .form-group select:hover {
+        cursor: pointer; }
+    .backend-form .form-group textarea {
+      padding: 0.5em; }
+    .backend-form .form-group input {
+      height: 2.5em; }
+    .backend-form .form-group .infotext {
+      color: #F05014; }
+    .backend-form .form-group p {
+      font-size: 12pt;
+      margin-bottom: 0.3em; }
 
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
