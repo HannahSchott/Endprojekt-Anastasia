@@ -13,7 +13,7 @@ class products extends controller{
   {
 
     if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST)) {
-        $this -> save_edit();
+        $this -> saveEdit($product_id);
     }
 
     $product_categorie = $this -> model ->  getProductCategorie($product_id);
@@ -52,8 +52,37 @@ class products extends controller{
     $this -> view -> render('products/edit', $this -> view -> data, $includeAll = false);
   }
 
-  public function save_edit()
+  public function saveEdit($product_id)
   {
+    $this -> view -> data['errors'] = [];
 
+    // Validation
+    $val = new validator();
+    $val -> val($_POST['name'], "Name", true, "text", 6, 50);
+    $val -> val($_POST['description'], "Beschreibung", true, "text", 20,500);
+    $val -> val($_FILES['picture']['name'], "Bild", true);
+    $val -> val($_POST['link'], "Link", true, "textnumber", 20);
+    $val -> val($_POST['price'], "Preis", true, "number", 2,4);
+    $val  -> val($_POST['month'], "Monat", true, "number", 2, 2);
+    $val -> val($_POST['year'], "Jahr", true, "number", 2,2);
+
+    if(count($val -> getErrors()) > 0) {
+      $this -> view -> data['errors'] = $val -> getErrors();
+    }else{
+      if(isset($this->view->data['errors']) && count($this->view->data['errors']) > 0){
+          return false;
+      }
+
+      $this -> model -> saveEdit($product_id);
+      header('Location:'.APP_ROOT.'backend/products/success');
+      exit();
+    }
+  }
+
+  public function success()
+  {
+    $this -> view -> data['products'] = $this -> model -> getAllProductsBackend();
+    $this -> view -> data['success'] = "Änderungen erfolgreich";
+    $this -> view -> render('products/index', $this -> view -> data, $includeAll = false);
   }
 }

@@ -74,4 +74,29 @@ class products_model extends model{
 
     return $res -> fetch_all(MYSQLI_ASSOC);
   }
+
+  public function saveEdit($product_id)
+  {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $link = $_POST['link'];
+    $price = $_POST['price'];
+    $month = $_POST['month'];
+    $year = $_POST['year'];
+
+    $month_id = $month.'.'.$year;
+    //Slug
+    $slug = explode("-", $name);
+    $lower = "";
+    foreach($slug as $text){
+        $lower .= strtolower($text);
+    }
+
+    $slug = str_replace(' ', '', $lower);
+
+    $res = $this -> db -> prepare("UPDATE products SET name = '$name', slug = '$slug' , description = '$description', product_link ='$link',price= '$price', month_id ='$month_id' WHERE id = '$product_id'");
+
+    return true;
+
+  }
 }
