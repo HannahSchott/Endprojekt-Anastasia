@@ -2,8 +2,17 @@
 
   <div class="order-form">
     <h2>Bestellen</h2>
+    <?php if( isset($errors) && count($errors) > 0 ) {
+      echo '<div class="errors">';
+      foreach($errors as $error):
 
+          echo "<p>$error</p>";
+
+      endforeach;
+      echo '</div>';
+    }?>
     <form class="order" method="post">
+      <input type="hidden" name="token" value="<?php echo $token; ?>">
       <div class="form-group" id="f-adress">
         <label for="adress">Adresse</label>
         <input type="text" id="adress" name="adress" value="">
