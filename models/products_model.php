@@ -94,7 +94,8 @@ class products_model extends model{
 
     $slug = str_replace(' ', '', $lower);
 
-    $res = $this -> db -> prepare("UPDATE products SET name = '$name', slug = '$slug' , description = '$description', product_link ='$link',price= '$price', month_id ='$month_id' WHERE id = '$product_id'");
+    $res = $this -> db -> query("UPDATE products SET name = '$name', slug = '$slug' , description = '$description', product_link ='$link',price= '$price', month_id ='$month_id' WHERE id = '$product_id'");
+
 
     return true;
 

@@ -60,7 +60,7 @@ class products extends controller{
     $val = new validator();
     $val -> val($_POST['name'], "Name", true, "text", 6, 50);
     $val -> val($_POST['description'], "Beschreibung", true, "text", 20,500);
-    $val -> val($_FILES['picture']['name'], "Bild", true);
+    $val -> val($_FILES['picture']['name'], "Bild", false);
     $val -> val($_POST['link'], "Link", true, "textnumber", 20);
     $val -> val($_POST['price'], "Preis", true, "number", 2,4);
     $val  -> val($_POST['month'], "Monat", true, "number", 2, 2);
@@ -73,7 +73,7 @@ class products extends controller{
           return false;
       }
 
-      $this -> model -> saveEdit($product_id);
+      $test = $this -> model -> saveEdit($product_id);
       header('Location:'.APP_ROOT.'backend/products/success');
       exit();
     }
