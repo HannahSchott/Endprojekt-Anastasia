@@ -23,8 +23,8 @@ class users extends controller{
     $this -> view -> data['errors'] = [];
 
     $val = new validator();
-    $val -> val($_POST['lastname'], "Nachname", true, "text", 6, 50);
-    $val -> val($_POST['firstname'], "Vorname", true, "text", 6, 50);
+    $val -> val($_POST['lastname'], "Nachname", true, "text", 3, 50);
+    $val -> val($_POST['firstname'], "Vorname", true, "text", 3, 50);
     $val -> val($_POST['email'], "Email", true, "email", 6, 50);
 
 

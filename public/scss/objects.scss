@@ -1378,6 +1378,13 @@ transition: transform 0.4s ease;
 
 //BACKEND
 
+.success_message{
+  padding: 1em;
+  background-color: green;
+  color: #fff;
+  font-size: 13pt;
+}
+
 .backend-wrapper{
   margin: 70px 100px;
   display: flex;
