@@ -25,11 +25,6 @@
         </tr>
       <?php endforeach; ?>
       </tbody>
-
-
-      <tr>
-
-      </tr>
     </table>
   </div>
 </main>

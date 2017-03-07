@@ -988,6 +988,7 @@ footer {
   .backend_table thead {
     border-bottom: 3px solid #89145C; }
   .backend_table th, .backend_table td {
+    height: 3em;
     border-collapse: collapse;
     padding: 1px 5px; }
     .backend_table th img, .backend_table td img {
