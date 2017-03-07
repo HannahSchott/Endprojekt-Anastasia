@@ -41,6 +41,13 @@ class users extends controller{
     }
   }
 
+  public function delete($user_id)
+  {
+    $this -> model -> delet($user_id);
+    header('Location:'.APP_ROOT.'backend/users/success');
+    exit();
+  }
+
   public function success()
   {
     $this -> view -> data['success'] = "Änderungen erfolgreich";

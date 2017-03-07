@@ -1,9 +1,9 @@
 <main>
     <div class="backend-wrapper">
         <h3>Userverwaltung</h3>
-      <?php if( isset($success) && count($success) > 0 ) {
-        echo $success;
-      }?>
+      <?php if( isset($success) && count($success) > 0 ) :?>
+        <p class="success_message"><?php echo $success; ?></p>
+      <?php endif;?>
       <table class="backend_table">
         <thead>
           <tr>
@@ -19,7 +19,6 @@
             <th>Abo Art</th>
             <th>Abo seit</th>
             <th>Gruppe</th>
-            <th>Activ</th>
           </tr>
         </thead>
         <tbody>
@@ -46,13 +45,8 @@
           <?php elseif($user['user_group'] >= 2):?>
             <th>Admin</th>
           <?php endif;?>
-            <?php if($user['is_active'] != 0):?>
-            <th>aktiv</th>
-            <?php else:?>
-            <th>nicht aktiv</th>
-            <?php endif;?>
             <th><a class="backend-button" href="<?php echo APP_ROOT?>backend/users/edit/<?php echo $user['id']; ?>">bearbeiten</a></th>
-            <th><a class="backend-button" href="delete">löschen</a></th>
+            <th><a class="backend-button" href="<?php echo APP_ROOT?>backend/users/delete/<?php echo $user['id']; ?>">löschen</a></th>
           </tr>
         <?php endforeach; ?>
         </tbody>

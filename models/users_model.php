@@ -6,7 +6,7 @@ class users_model extends model{
   public function getAllUsers()
   {
 
-    $res = $this -> db -> query("SELECT users.id,users.lastname, users.payment, users.`abo-id`, users.`abo-timestamp`, users.user_group, users.is_active, abos.name as abo_name  FROM users LEFT JOIN abos ON users.`abo-id` = abos.id");
+    $res = $this -> db -> query("SELECT users.id,users.lastname, users.payment, users.`abo-id`, users.`abo-timestamp`, users.user_group, users.is_active, abos.name as abo_name  FROM users LEFT JOIN abos ON users.`abo-id` = abos.id WHERE is_active = '1'");
 
     return $res -> fetch_all(MYSQLI_ASSOC);
   }
@@ -44,6 +44,13 @@ class users_model extends model{
       //etc.
     }
     $res = $this -> db -> query("UPDATE users SET lastname = '$lastname', firstname = '$firstname', email = '$email', `newsletter` = '$newsletter', user_group = '$user_group' WHERE id = '$user_id'");
+
+    return true;
+  }
+
+  public function delet($user_id)
+  {
+    $res = $this -> db -> query("UPDATE users SET is_active = '0' WHERE id ='$user_id'");
 
     return true;
   }
