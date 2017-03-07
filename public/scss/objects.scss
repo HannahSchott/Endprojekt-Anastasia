@@ -1267,6 +1267,14 @@ transition: transform 0.4s ease;
   transition: transform 0.4s ease;
 }
 
+.answer_img__selected{
+  border: 2px solid grey;
+  box-sizing: border-box;
+  border-radius: 3pt;
+  transform: scale(1.2);
+
+}
+
 .answer-wrapper{
   display: flex;
   flex-wrap: wrap;

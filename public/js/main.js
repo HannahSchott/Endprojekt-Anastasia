@@ -129,23 +129,28 @@ $(document).ready(function () {
     console.log('AnswerImg');
     event.preventDefault();
     event.stopPropagation();
-      var page_id = $('.button-next').attr('id');
+    var page_id = $('.button-next').attr('id');
 
-      var target = $(event.target);
-      var parent = target.parent();
-      var img = parent.find('.answer_img');
+    var target = $(event.target);
+    var parent = target.parent();
+    var img = parent.find('.answer_img');
 
-      var img_attr = img.attr('alt');
-      var img_id = img.attr('id');
 
-      //page_answer_count setzen damit er überschrieben werden kann
-      //Antworten die keine Auswirkung auf ergebniss haben sollen
-      localStorage.setItem(page_id, img_attr);
-      if(page_id == 4 || page_id == 5 || page_id == 9){
-        localStorage.setItem('answer_count:'+page_id, '0');
-      }else{
-        localStorage.setItem('answer_count:'+page_id, img_id);
-      }
+
+    var img_attr = img.attr('alt');
+    var img_id = img.attr('id');
+
+    //page_answer_count setzen damit er überschrieben werden kann
+    //Antworten die keine Auswirkung auf ergebniss haben sollen
+    localStorage.setItem(page_id, img_attr);
+    if(page_id == 4 || page_id == 5 || page_id == 9){
+      localStorage.setItem('answer_count:'+page_id, '0');
+    }else{
+      localStorage.setItem('answer_count:'+page_id, img_id);
+    }
+
+    $('.answer_img__selected').removeClass('answer_img__selected');
+    img.addClass('answer_img__selected');
   });
 
 
