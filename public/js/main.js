@@ -44,14 +44,12 @@ $(document).ready(function () {
   });
 
 
-
   //Kernfeature
 
   //Next Button
   var ButtonNext = $('.button-next');
 
-  ButtonNext.on('click', function(e){
-    e.preventDefault();
+  ButtonNext.on('click', function(event){
     var page_id = $(this).attr('id');
     getNewQuestion(page_id);
   });
@@ -59,19 +57,52 @@ $(document).ready(function () {
   //Back Button
   var ButtonBack = $('.button-back');
 
-  ButtonBack.on('click', function(e){
-    e.preventDefault();
+  ButtonBack.on('click', function(event){
+    event.preventDefault();
     var page_id = $(this).attr('id');
     getNewQuestion(page_id);
   })
 
   function getNewQuestion(page_id){
-    e.preventDefault();
+    event.preventDefault();
     console.log('getNewQuestion');
 
+    //Answer Count Berechnen
+    if(localStorage.getItem('answer_count') == null){
+       localStorage.setItem('answer_count', '0');
+       var old_count = parseFloat(localStorage.getItem('answer_count'));
+       var count = parseFloat(localStorage.getItem('answer_count:'+page_id));
+       var new_count = old_count + count;
+       localStorage.setItem('answer_count', new_count);
+    }else{
+      var old_count = parseFloat(localStorage.getItem('answer_count'));
+      var count = parseFloat(localStorage.getItem('answer_count:'+page_id));
+
+      var new_count = old_count + count;
+      localStorage.setItem('answer_count', new_count);
+    }
+
+    //Antwort string erstellen
+    if(localStorage.getItem('answers') == null){
+      localStorage.setItem('answers', '');
+      var old_answers = localStorage.getItem('answers');
+      var current_answer = localStorage.getItem(page_id);
+
+      var new_answers = localStorage.setItem('answers', current_answer);
+    }else{
+      var old_answers = localStorage.getItem('answers');
+      var current_answer = localStorage.getItem(page_id);
+
+      var new_answers = localStorage.setItem('answers', old_answers+','+current_answer);
+    }
+
+    var current_answers = localStorage.getItem('answers');
+    console.log(current_answers);
+
     $.ajax({
-      type: 'GET',
-      url: 'http://localhost:8888/Anastasia/anastasia/getPageContent/' + page_id,
+      type: 'POST',
+      url: 'http://localhost:8888/Endprojekt-Anastasia/anastasia/getPageContent/' + page_id,
+      data: {'images': current_answers},
       dataType: "html",
       success: function (data) {
 
@@ -92,10 +123,12 @@ $(document).ready(function () {
 
 //Antwort speichern
 
-  var answerImg = $('.answer_img');
+  var answerImg = '.answer_img';
 
-  $('body').on('click', answerImg, function(event){
-
+  $(document).on('click', answerImg, function(event){
+    console.log('AnswerImg');
+    event.preventDefault();
+    event.stopPropagation();
       var page_id = $('.button-next').attr('id');
 
       var target = $(event.target);
@@ -103,45 +136,39 @@ $(document).ready(function () {
       var img = parent.find('.answer_img');
 
       var img_attr = img.attr('alt');
-      // console.log(page_id);
+      var img_id = img.attr('id');
 
-      $.ajax({
-        type: 'POST',
-        url:"http://localhost:8888/Anastasia/anastasia/setAnswer",
-        data:{ answer : img_attr, page : page_id},
-         success: function(data,status){
-           console.log(status);
-           console.log(data);
-           $('.button-next__dissabeld').removeClass('button-next__dissabeld').addClass('button-next');
-        }
-      })
-
-
-
-
-// AJAX um Antwort in session zu speichern
-    // $.ajax({
-    //   type: 'POST',
-    //   url:"http://localhost:8888/Anastasia/anastasia/setAnswerSession",
-    //   data:{ name : img_attr , page : page_id},
-    //   success: function(data,status){
-    //       console.log(status);
-    //       console.log(data);
-    //
-    //       if(data < 9){
-    //         console.log(data);
-    //         console.log('kleiner acht')
-    //         // window.location.href = 'http://localhost:8888/Anastasia/anastasia/getPageContent/' + data + '/#book';
-    //       }else{
-    //         console.log('größer acht')
-    //         // window.location.href = 'http://localhost:8888/Anastasia/anastasia/getPageContent/9/#book';
-    //       }
-    //     }
-    //
-    // })
+      //page_answer_count setzen damit er überschrieben werden kann
+      //Antworten die keine Auswirkung auf ergebniss haben sollen
+      localStorage.setItem(page_id, img_attr);
+      if(page_id == 4 || page_id == 5 || page_id == 9){
+        localStorage.setItem('answer_count:'+page_id, '0');
+      }else{
+        localStorage.setItem('answer_count:'+page_id, img_id);
+      }
   });
 
 
+//Fertig stellen Antworten in db speichern
+
+var finishButton = '.finish_button';
+
+$(document).on('click', finishButton, function(event){
+  event.preventDefault();
+
+  var answers = localStorage.getItem('answers');
+
+
+  $.ajax({
+    type: "POST",
+    url: 'http://localhost:8888/Endprojekt-Anastasia/anastasia/setAnswers/',
+    data: {'answers': answers},
+    success: function (data) {
+      window.location.href = 'http://localhost:8888/Endprojekt-Anastasia/home';
+  }
+});
+
+});
 //  Productsorting add Class
 
   $('.categorie').on('click', function(event){

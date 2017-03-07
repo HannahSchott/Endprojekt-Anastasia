@@ -36,16 +36,16 @@
       </ul>
     </div>
     <div class="header-logo">
-      <a href="http://localhost:8888/Anastasia/">
+      <a href="<?php echo APP_ROOT; ?>">
       <img src="<?php echo APP_ROOT; ?>/public/img/logo-big.png" alt="logo" />
     </a>
     </div>
 
     <div class="header-navigation">
       <ul>
-        <li><a href="http://localhost:8888/Anastasia/about" class="navigation-element">Über uns</a></li>
-        <li><a href="http://localhost:8888/Anastasia/abos" class="navigation-element">Abos</a></li>
-        <li><a href="http://localhost:8888/Anastasia/products" class="navigation-element">Produkte</a></li>
+        <li><a href="<?php echo APP_ROOT; ?>about" class="navigation-element">Über uns</a></li>
+        <li><a href="<?php echo APP_ROOT; ?>abos" class="navigation-element">Abos</a></li>
+        <li><a href="<?php echo APP_ROOT; ?>products" class="navigation-element">Produkte</a></li>
       </ul>
     </div>
   </header>

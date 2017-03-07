@@ -860,11 +860,6 @@ footer {
   width: 100vw;
   justify-content: space-around; }
 
-.button-next__dissabeld {
-  pointer-events: none;
-  cursor: default;
-  background-color: grey; }
-
 .question-wrapper {
   display: block;
   width: 50vw; }

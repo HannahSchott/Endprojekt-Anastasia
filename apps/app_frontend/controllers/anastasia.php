@@ -4,7 +4,6 @@ class anastasia extends controller{
 
     public function index()
     {
-      sessions::init();
       if(!isset($page_id)){
         $page_id = 0;
       }
@@ -24,20 +23,9 @@ class anastasia extends controller{
       $this -> view -> render('anastasia/index', $this -> view -> data);
     }
 
-    public function setAnswerSession(){
+    public function setAnswers(){
 
-      echo ($this -> model -> setAnswerSession());
-
-    }
-
-    public function setAnswer(){
-          var_dump($_POST['answer']);
-      var_dump ($this -> model -> setAnswer());
-    }
-
-    public function setAnswers($user_id){
-
-      $this -> model -> setAnswers($user_id);
+      $this -> model -> setAnswers();
     }
 
 }
