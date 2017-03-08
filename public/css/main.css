@@ -737,6 +737,12 @@ ul {
   display: flex;
   justify-content: flex-end; }
 
+.form-error {
+  color: red; }
+
+.form-success {
+  color: green; }
+
 .footer-contact form {
   display: flex;
   flex-wrap: wrap;

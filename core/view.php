@@ -10,6 +10,14 @@ class view{
 
     public function render($template, $data = array(), $includeAll = true)
     {
+        //Aktuelle Seite in session speichern
+        if(!isset($_GET['url'])){
+          $currentpage = 'home';
+        }else{
+          $currentpage = $_GET['url'];
+        }
+        sessions::set('currentpage',$currentpage);
+
         if(count($data) > 0) extract($data);
 
         if(sessions::get('role') > 0) {

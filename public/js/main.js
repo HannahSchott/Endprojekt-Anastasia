@@ -182,6 +182,70 @@ $(document).on('click', finishButton, function(event){
 
   });
 
+
+  //Footer newsletter
+
+  var newsletter = '#newsletter-submit';
+
+  $(document).on('click', newsletter, function(event){
+    event.preventDefault();
+    var email = $('#newsletter-email').val();
+
+    $.ajax({
+      type:"POST",
+      url:'http://localhost:8888/Endprojekt-Anastasia/footer/setNewsletter',
+      data:{email:email},
+      success: function(data){
+        var messages = JSON.parse(data);
+        if (messages.hasOwnProperty('errors')) {
+          $(".form-error").remove();
+          $(".form-success").remove();
+          $('.footer-newsletter-info').append("<span class=\"form-error\"></br></br>"+messages.errors+"</span>");
+        }else{
+          $(".form-error").remove();
+          $(".form-success").remove();
+          $('.footer-newsletter-info').append("<span class=\"form-success\"></br></br>"+messages.success+"</span>");
+        }
+      }
+    })
+  });
+
+  //Footer Contact
+
+  var contact = '#contact-submit';
+
+  $(document).on('click', contact, function(event){
+    event.preventDefault();
+
+    var email = $('#contact-email').val();
+    var subject = $('#contact-subject').val();
+    var message = $('#contact-message').val();
+
+    $.ajax({
+      type:"POST",
+      url:'http://localhost:8888/Endprojekt-Anastasia/footer/setContact',
+      data:{email:email, subject:subject, message:message},
+      success: function(data){
+        console.log(data);
+
+        var messages = JSON.parse(data);
+
+        if (messages.hasOwnProperty('errors')) {
+          console.log('error');
+          $(".form-error").remove();
+          $(".form-success").remove();
+          $('.footer-contact-info').append("<span class=\"form-error\"></br></br>"+messages.errors+"</span>");
+        }else{
+          $(".form-error").remove();
+          $(".form-success").remove();
+          $('.footer-contact-info').append("<span class=\"form-success\"></br></br>"+messages.success+"</span>");
+        }
+
+      }
+    })
+
+
+  });
 //Dokument Readey Funktion END
 });
 
