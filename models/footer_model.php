@@ -47,11 +47,9 @@ class footer_model extends model{
     }
 
     $sent_at = time();
+    $is_active = 1;
 
-    $stmt = $this -> db -> prepare("INSERT INTO contact(user_id,email,subject,message,sent_at) VALUES(?,?,?,?,?)");
-    $stmt -> bind_param("isssi", $user_id, $email,$subject,$message,$sent_at);
-
-    $stmt -> execute();
+    $res = $this -> db -> query("INSERT INTO contact(user_id,email,subject,message,sent_at,is_active) VALUES('$user_id', '$email','$subject','$message','$sent_at','$is_active')");
 
     return true;
 
