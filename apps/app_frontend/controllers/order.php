@@ -37,12 +37,17 @@ class order extends controller{
       $this -> view -> data['errors'] = $val -> getErrors();
 
       }else{
-        $this -> model -> setOrder($abo_id);
-        header('Location:'.APP_ROOT.'anastasia');
-        exit();
+        $setOrder = $this -> model -> setOrder($abo_id);
+        if($setOrder == true){
+          header('Location:'.APP_ROOT.'anastasia');
+          exit();
+        }else{
+          $this -> view -> data['errors'][1] = 'Du hast bereits ein Abo';
+        }
+
       }
     }else{
-      $this -> view -> data['errors'] = 'Das Formular wurde schon abgeschickt';
+      $this -> view -> data['errors'][1] = 'Das Formular wurde schon abgeschickt';
     }
   }
 }
