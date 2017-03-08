@@ -15,4 +15,18 @@ class contact_model extends model{
 
     return true;
   }
+
+  public function getContact($contact_id)
+  {
+    $res = $this -> db -> query("SELECT contact.*, users.lastname, users.firstname FROM contact LEFT JOIN users ON users.id = contact.user_id WHERE contact.id = '9'");
+
+    return $res -> fetch_assoc();
+  }
+
+  public function sendAnser($subject, $answer)
+  {
+
+    //HIER: Email weg schicken!!
+    return true;
+  }
 }

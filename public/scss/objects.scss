@@ -1400,6 +1400,9 @@ transition: transform 0.4s ease;
   align-items: center;
   flex-direction: column;
 
+  input,textarea{
+    border: 1px solid grey;
+  }
   h3 {
     margin-bottom: 2em;
   }
@@ -1459,7 +1462,10 @@ transition: transform 0.4s ease;
 
 	}
 }
+.infotext{
 
+  color: map-get($colors, orange);
+}
 
 .backend-form{
 
@@ -1514,10 +1520,7 @@ transition: transform 0.4s ease;
       height: 2.5em;
     }
 
-    .infotext{
 
-      color: map-get($colors, orange);
-    }
 
     p{
       font-size: 12pt;
@@ -1526,6 +1529,29 @@ transition: transform 0.4s ease;
   }
 }
 
+.contact{
+  width: 50vw;
+  margin-bottom: 3em;
+  p{
+      border-bottom: 1px solid grey;
+      padding: 0.5em;
+  }
+
+  .contact-message-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contac-message{
+    padding: 1em 1em 1em 0;
+  }
+
+  .infotext{
+    font-size: 13pt;
+    margin-right: 1em;
+  }
+}
 
 //Placeholertext farbe
 
