@@ -77,12 +77,12 @@ class products_model extends model{
 
   public function saveEdit($product_id)
   {
-    $name = $_POST['name'];
-    $description = $_POST['description'];
-    $link = $_POST['link'];
-    $price = $_POST['price'];
-    $month = $_POST['month'];
-    $year = $_POST['year'];
+    $name = $this -> db -> real_escape_string($_POST['name']);
+    $description = $this -> db -> real_escape_string($_POST['description']);
+    $link = $this -> db -> real_escape_string($_POST['link']);
+    $price = $this -> db -> real_escape_string($_POST['price']);
+    $month = $this -> db -> real_escape_string($_POST['month']);
+    $year = $this -> db -> real_escape_string($_POST['year']);
 
     $month_id = $month.'.'.$year;
     //Slug
@@ -96,7 +96,7 @@ class products_model extends model{
 
     $res = $this -> db -> query("UPDATE products SET name = '$name', slug = '$slug' , description = '$description', product_link ='$link',price= '$price', month_id ='$month_id' WHERE id = '$product_id'");
 
-
+    
     return true;
 
   }

@@ -73,7 +73,8 @@ class products extends controller{
           return false;
       }
 
-      $test = $this -> model -> saveEdit($product_id);
+      $this -> model -> saveEdit($product_id);
+
       header('Location:'.APP_ROOT.'backend/products/success');
       exit();
     }

@@ -1,9 +1,9 @@
 <main>
   <div class="backend-wrapper">
     <h3>Produktverwaltung</h3>
-    <?php if( isset($success) && count($success) > 0 ) {
-      echo $success;
-    }?>
+    <?php if( isset($success) && count($success) > 0 ):?>
+      <p class="success_message"><?php echo $success; ?></p>
+    <?php endif;?>
     <table class="backend_table">
       <thead>
         <tr>
