@@ -54,10 +54,16 @@ class register extends controller{
 
         $userHash = $this -> model -> setNewUser($_POST);
 
-        //Email wegsenden
-
+        // E-Mail wegsenden
+          $message = "<p>Danke für deine Registrierung. Um diese abzuschließen klicke bitte auf den nachfolgenden Link:<br><br><a href=\"".APP_ROOT."register/activate/$userHash\">Hier klicken</a></p>";
+          $mail = new PHPMailer();
+          $mail -> IsHTML(true);
+          $mail -> SetFrom("hannah.schott@hotmail.com", "Hannah Schott");
+          $mail -> AddAddress($_POST['f-email']);
+          $mail -> Subject = 'Registrierung Anastasia';
+          $mail -> Body = $message;
+          
         // Weiterleitung auf register/success
-
         header('Location:'.APP_ROOT.'register/success');
         exit();
 
