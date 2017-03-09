@@ -20,8 +20,7 @@ class login extends controller{
 
     private function proceed()
       {
-
-        if(sessions::get('form-token')== $_POST['token']){
+        if(sessions::get('form-token') == $_POST['token']){
           $uemail = $_POST['f-email'];
           $pw = $_POST['f-pw'];
 
@@ -29,6 +28,7 @@ class login extends controller{
             if($this -> model -> checkPw($uemail, $pw)) {
               if($this -> model -> checkIfUserIsActive($uemail)){
                 //Hier sessions setzen mit user informationen
+
                   $user = $this -> model -> getUserData($uemail);
 
 
@@ -50,7 +50,7 @@ class login extends controller{
             $this -> view -> data['errors'] = ['Die Emailadresse stimmt nicht'];
           }
         }
-        $this -> view -> data['errors'] = ['Formular wurde schon abgeschickt'];
+        // $this -> view -> data['errors'] = ['Formular wurde schon abgeschickt'];
 
       }
 
