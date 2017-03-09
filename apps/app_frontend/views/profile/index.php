@@ -25,6 +25,7 @@
     <div class="profile_abo">
       <h3>Dein Abo</h3>
       <?php if($user['adress'] != 0):?>
+        <!--  Abo datum!!!!-->
       <p>3-Monats-Abo seit 02.03.2017</p>
       <ul class="abo_progress">
         <li class="<?php if($user['order-status'] == 1){ echo("abo_progress--complete");}?>">Bezahlt</li>

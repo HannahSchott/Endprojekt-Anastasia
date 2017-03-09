@@ -126,7 +126,6 @@ $(document).ready(function () {
   var answerImg = '.answer_img';
 
   $(document).on('click', answerImg, function(event){
-    console.log('AnswerImg');
     event.preventDefault();
     event.stopPropagation();
     var page_id = $('.button-next').attr('id');
@@ -244,6 +243,37 @@ $(document).on('click', finishButton, function(event){
       }
     })
 
+
+  });
+
+  //Backend SetOrderStatus
+
+  var status = '#orderstatus';
+
+  $(document).on('click', status,function(event){
+      event.preventDefault();
+      event.stopPropagation();
+
+      var target = $(event.target);
+      var href = target.attr('href');
+      var status = href.substr(href.length - 1);
+
+      var order_id = $('h3').attr('id');
+      console.log(order_id);
+      console.log(status);
+      $.ajax({
+        type: "POST",
+        url:"http://localhost:8888/Endprojekt-Anastasia/backend/order/SetOrderStatus/"+status,
+        data:{order_id:order_id},
+        success: function(data, status){
+
+          $('.abo_progress--complete').removeClass('abo_progress--complete');
+          var li = target.parent();
+
+          li.attr("class","abo_progress--complete");
+        }
+
+      })
 
   });
 //Dokument Readey Funktion END

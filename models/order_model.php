@@ -31,7 +31,6 @@ class order_model extends model{
     }else{
 
     }
-
   }
 
   public function checkIfOrderSet($user_id)
@@ -46,4 +45,31 @@ class order_model extends model{
       return true;
     }
   }
+
+  public function getOrders()
+  {
+    $res = $this -> db -> query("SELECT orders.id,orders.user_id, orders.abo_id, orders.`date-ordered`,orders.`order-status`, users.lastname, abos.name as abo_name FROM orders LEFT JOIN users ON orders.user_id = users.id LEFT JOIN abos ON orders.abo_id = abos.id");
+
+    return $res -> fetch_all(MYSQLI_ASSOC);
+  }
+
+  public function getOrder($order_id)
+  {
+    $res = $this -> db -> query("SELECT orders.id,orders.user_id, orders.abo_id, orders.`date-ordered`,orders.`order-status`, users.lastname, users.firstname, users.adress, users.`box-type_id` FROM orders LEFT JOIN users ON orders.user_id = users.id WHERE orders.id = '$order_id'");
+
+    return $res -> fetch_assoc();
+  }
+
+  public function setOrderStatus($status_id)
+  {
+    $order_id = $_POST['order_id'];
+    $stmt = $this -> db -> prepare("UPDATE orders SET `order-status` = ? WHERE id = ?");
+
+    $stmt -> bind_param("ii", $status_id, $order_id);
+
+    $stmt -> execute();
+
+    return true;
+  }
+
 }

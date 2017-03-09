@@ -38,7 +38,7 @@
     <div class="header-logo">
       <a href="<?php echo APP_ROOT; ?>">
       <img src="<?php echo APP_ROOT; ?>/public/img/logo-big.png" alt="logo" />
-    </a>
+      </a>
     </div>
 
     <div class="header-navigation">

@@ -523,6 +523,9 @@ ul {
   .abo_progress li {
     padding: 15px 30px;
     border: 1px solid #8C466D; }
+  .abo_progress a {
+    cursor: pointer;
+    color: #fff; }
   .abo_progress .abo_progress--complete {
     background-color: #F05014;
     background-image: url("../img/check.png");

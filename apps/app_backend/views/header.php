@@ -24,15 +24,15 @@
     </div>
 
     <div class="header-logo">
-      <a href="http://localhost:8888/Anastasia/">
-        <img src="<?php echo APP_ROOT; ?>/public/img/logo-big.png" alt="logo" />
+      <a href="<?php echo APP_ROOT;?>backend/home">
+        <img src="<?php echo APP_ROOT; ?>public/img/logo-big.png" alt="logo" />
       </a>
     </div>
 
       <ul class="backend_menu">
         <li><a class="backend-button" href="<?php echo APP_ROOT?>backend/products">Produkte verwalten</a></li>
         <li><a class="backend-button" href="<?php echo APP_ROOT?>backend/users">User verwalten</a></li>
-        <li><a class="backend-button" href="<?php echo APP_ROOT?>backend/orders">Bestellungen</a></li>
+        <li><a class="backend-button" href="<?php echo APP_ROOT?>backend/order">Bestellungen</a></li>
         <li><a class="backend-button" href="<?php echo APP_ROOT?>backend/contact">Kontakanfragen</a></li>
       </ul>
 
