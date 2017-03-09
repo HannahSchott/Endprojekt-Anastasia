@@ -1019,7 +1019,9 @@ footer {
     border-bottom: 1px solid #89145C; }
 
 .infotext {
-  color: #F05014; }
+  color: #F05014;
+  font-size: 13pt;
+  margin-right: 0.5em; }
 
 .backend-form {
   display: flex;
@@ -1064,6 +1066,13 @@ footer {
       font-size: 12pt;
       margin-bottom: 0.3em; }
 
+.backend-order-info {
+  margin: 0 auto;
+  margin-bottom: 1.5em;
+  font-size: 13pt; }
+  .backend-order-info li {
+    margin-bottom: 0.5em; }
+
 .contact {
   width: 50vw;
   margin-bottom: 3em; }
@@ -1076,9 +1085,6 @@ footer {
     align-items: flex-start; }
   .contact .contac-message {
     padding: 1em 1em 1em 0; }
-  .contact .infotext {
-    font-size: 13pt;
-    margin-right: 1em; }
 
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */

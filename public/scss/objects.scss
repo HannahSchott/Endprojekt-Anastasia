@@ -1468,8 +1468,9 @@ transition: transform 0.4s ease;
 	}
 }
 .infotext{
-
   color: map-get($colors, orange);
+  font-size: 13pt;
+  margin-right: 0.5em;
 }
 
 .backend-form{
@@ -1525,12 +1526,19 @@ transition: transform 0.4s ease;
       height: 2.5em;
     }
 
-
-
     p{
       font-size: 12pt;
       margin-bottom: 0.3em;
     }
+  }
+}
+
+.backend-order-info{
+  margin: 0 auto;
+  margin-bottom: 1.5em;
+  font-size: 13pt;
+  li{
+    margin-bottom: 0.5em;
   }
 }
 
@@ -1552,10 +1560,7 @@ transition: transform 0.4s ease;
     padding: 1em 1em 1em 0;
   }
 
-  .infotext{
-    font-size: 13pt;
-    margin-right: 1em;
-  }
+
 }
 
 //Placeholertext farbe
