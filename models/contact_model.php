@@ -18,7 +18,7 @@ class contact_model extends model{
 
   public function getContact($contact_id)
   {
-    $res = $this -> db -> query("SELECT contact.*, users.lastname, users.firstname FROM contact LEFT JOIN users ON users.id = contact.user_id WHERE contact.id = '9'");
+    $res = $this -> db -> query("SELECT contact.*, users.lastname, users.firstname FROM contact LEFT JOIN users ON users.id = contact.user_id WHERE contact.id = '$contact_id'");
 
     return $res -> fetch_assoc();
   }
