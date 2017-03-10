@@ -40,11 +40,10 @@ class products_model extends model{
 
   public function setComment($product_id, $comment)
   {
-    // $content = real_escape_string($comment);
-    $content = $comment;
+    $content = $this -> db -> real_escape_string($comment);
     $created_at = time();
-    //user_id aus session holen
-    $user_id = 17;
+
+    $user_id = sessions::get('uid');
 
     $stmt = $this -> db -> prepare("INSERT INTO comments(`user-id`, content, `product-id`, created_at) VALUES(?,?,?,?)");
 
@@ -212,7 +211,26 @@ class products_model extends model{
 
     $res = $this -> db -> query("INSERT INTO products (name,slug,description,product_link,price,`categories-id`,month_id,is_active)  VALUES ('$name','$slug' ,'$description', '$link','$price','$categorie_id', '$month_id' ,$is_active)");
 
-    
+
     return true;
+  }
+
+  public function checkIfCommentExist($comment)
+  {
+    $user_id = sessions::get('uid');
+    var_dump(sessions::get('uid'));
+    $res = $this -> db -> query("SELECT content FROM comments WHERE `user-id` = $user_id");
+
+    $comments = $res -> fetch_all(MYSQLI_ASSOC);
+    foreach($comments as $comment_db){
+      if($comment_db['content'] == $comment){
+        echo'true';
+        return true;
+      }else{
+        echo 'false';
+        return false;
+      }
+    }
+
   }
 }

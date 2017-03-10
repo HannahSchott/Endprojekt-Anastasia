@@ -40,7 +40,7 @@ class register extends controller{
 
         // Hier prüfe ich ob der username/ schon existiert
         if($this -> model -> checkIfEmailExist($_POST['f-email'])) {
-            array_push($this -> view -> data['errors'], "E-Mail existiert bereits.");
+            array_push($this -> view -> data['errors'], "Die E-Mail-Adresse existiert bereits.");
         }
 
         if(isset($this->view->data['errors']) && count($this->view->data['errors']) > 0){
