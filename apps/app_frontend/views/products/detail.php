@@ -35,7 +35,7 @@
 
     <div class="user-comment">
       <h4>Dein Kommentar</h4>
-      <form class="" method="post">
+      <form class="comment-form" method="post">
         <?php if( isset($errors) && count($errors) > 0 ) {
           echo '<div class="errors">';
           foreach($errors as $error):

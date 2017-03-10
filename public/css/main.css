@@ -481,11 +481,12 @@ ul {
   background-color: #fff;
   padding: 40px;
   border-radius: 30px;
-  height: 203px; }
+  min-height: 12em; }
   .user-comment .comment-box {
-    height: 100px;
+    margin-top: 2em;
+    height: 8em;
     width: 100%;
-    border: 3px solid #F05014; }
+    border: 2px solid grey; }
   .user-comment .button-comment {
     font-size: 15pt;
     color: #fff;

@@ -631,13 +631,16 @@ padding: 50px 100px;
   background-color: #fff;
   padding: 40px;
   border-radius: 30px;
-  height: 203px;
+  min-height: 12em;
 
   .comment-box{
-    height: 100px;
+    margin-top: 2em;
+    height: 8em;
     width: 100%;
-    border: 3px solid map-get($colors, orange);
+    border: 2px solid grey;
   }
+
+
 
   .button-comment{
   font-size: 15pt;
