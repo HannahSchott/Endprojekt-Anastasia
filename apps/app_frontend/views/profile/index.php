@@ -52,11 +52,15 @@
         <div class="product-image">
         <img src="<?php echo APP_ROOT;?>public/img/productimages/<?php echo $product['main_img']; ?>" alt="<?php echo $product['slug']; ?>"/>
         </div>
-        <div class="featrued_products-crowns">
-          <img src="<?php echo APP_ROOT;?>public/img/crowns/<?php echo $product['comments_rating']; ?>.png" alt="crowns"/>
+        <div class="featrued_products-crowns" id="<?php echo $product['id'];?>">
+          <div class="crown_5 crown"></div>
+            <div class="crown_4 rating_5 crown"></div>
+            <div class="crown_3 rating_4 rating_5 crown"></div>
+            <div class="crown_2 rating_3 rating_4 rating_5 crown"></div>
+            <div class="crown_1 rating_3 rating_4 rating_5 crown"></div>
         </div>
         <h3><?php echo $product['name']; ?></h3>
-        <p><a href="#" class="product_rate">bewerten</a>/<a href="#" class="product_comment">kommentiern</a></p>
+        <p><a href="<?php echo APP_ROOT?>products/detail/<?php echo $product['id']?>" class="product_comment">kommentiern</a></p>
       </div>
     <?php endforeach; ?>
 

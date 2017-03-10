@@ -737,6 +737,46 @@ padding: 50px 100px;
 .profile_abo{
 
 }
+.featrued_products-crowns{
+      display: flex;
+      flex-direction: row-reverse;
+  .crown{
+    height: 46px;
+    background-image: url(../img/rating/crown_empty.png);
+    background-size: 45px;
+    background-repeat: no-repeat;
+    width: 50px;
+
+    &:hover{
+      background-image: url(../img/rating/crown_colored.png);
+    }
+  }
+
+  .crown_2{
+    &:hover~.crown_1{
+      background-image: url(../img/rating/crown_colored.png);
+    }
+  }
+
+  .crown_3{
+    &:hover~.rating_3{
+        background-image: url(../img/rating/crown_colored.png);
+    }
+  }
+
+  .crown_4{
+    &:hover~.rating_4{
+        background-image: url(../img/rating/crown_colored.png);
+    }
+  }
+  .crown_5{
+    &:hover~.rating_5{
+        background-image: url(../img/rating/crown_colored.png);
+    }
+}
+
+}
+
 
 .profile_products{
   width: 90%;
@@ -751,12 +791,9 @@ padding: 50px 100px;
   padding: 0;
 }
 
-.product_rate{
-  color: map-get($colors, orange);
-}
 
 .product_comment{
-  color: map-get($colors, purple);
+  color: map-get($colors, orange);
 }
 
 //Register
