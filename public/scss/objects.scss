@@ -1012,7 +1012,7 @@ box-shadow: $shadow;
 
         padding-bottom: 3px;
 
-        li:hover{
+        a:hover{
             border-bottom: 2px solid #fff;
         }
         a{
@@ -1071,33 +1071,36 @@ box-shadow: $shadow;
     }
 
     li {
+        a{
+            background-image: url('../img/spritesheet.png');
+            background-repeat: no-repeat;
+            text-indent: -100000px;
+            margin: 10px 10px;
 
-                a{
-                    background-image: url('../img/spritesheet.png');
-                    background-repeat: no-repeat;
-                    text-indent: -100000px;
-                    margin: 10px 10px;
 
+            display: block;
+            width: 49px;
+            height: 49px;
+            background-size: 10em;
+            background-position: -2px -2px;
 
-                    display: block;
-                    width: 49px;
-                    height: 48px;
-                    background-size: 10em;
-                    background-position: -2px -2px;
-
-                    &.pinterest{
-                        background-position: -2px -56px;
-                    }
-
-                    &.youtube{
-                        background-position: -109px -3px;
-                    }
-
-                    &.instagram{
-                        background-position: -56px -2px;
-                    }
-                }
+            &.pinterest{
+                background-position: -2px -56px;
             }
+
+            &.youtube{
+                background-position: -109px -3px;
+            }
+
+            &.instagram{
+                background-position: -56px -2px;
+            }
+
+            &:hover{
+              transform: scale(1.2);
+            }
+        }
+      }
 }
     footer {
 
@@ -1145,14 +1148,16 @@ box-shadow: $shadow;
 
 
         input[type = 'submit'] {
-
             background-color: map-get($colors, orange);
             border-radius: 10px;
             width: 30%;
             cursor: pointer;
             align-self: flex-end;
-
             min-width: 100px;
+
+            &:hover{
+              transform: scale(1.1);
+            }
         }
 
         textarea {

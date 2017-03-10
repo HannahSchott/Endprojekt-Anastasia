@@ -726,7 +726,7 @@ ul {
     margin-top: 15px;
     margin-right: 30px;
     padding-bottom: 3px; }
-    .footer-navigation ul li li:hover {
+    .footer-navigation ul li a:hover {
       border-bottom: 2px solid #fff; }
     .footer-navigation ul li a {
       color: #fff; }
@@ -770,7 +770,7 @@ ul {
     margin: 10px 10px;
     display: block;
     width: 49px;
-    height: 48px;
+    height: 49px;
     background-size: 10em;
     background-position: -2px -2px; }
     .footer-socialmedia li a.pinterest {
@@ -779,6 +779,8 @@ ul {
       background-position: -109px -3px; }
     .footer-socialmedia li a.instagram {
       background-position: -56px -2px; }
+    .footer-socialmedia li a:hover {
+      transform: scale(1.2); }
 
 footer {
   display: flex;
@@ -815,6 +817,8 @@ footer {
     cursor: pointer;
     align-self: flex-end;
     min-width: 100px; }
+    footer input[type='submit']:hover {
+      transform: scale(1.1); }
   footer textarea {
     margin: 0.8em 0;
     padding: 0.8em;

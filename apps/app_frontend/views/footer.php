@@ -2,10 +2,10 @@
 <div class="footer-navigation footer_item">
  <h3>Navigation</h3>
  <ul>
-   <li><a href="#">Startseite</a></li>
-   <li><a href="#">Über uns</a></li>
-   <li><a href="#">Abos</a></li>
-   <li><a href="#">Produkte</a></li>
+   <li><a href="<?php echo APP_ROOT;?>home">Startseite</a></li>
+   <li><a href="<?php echo APP_ROOT;?>about">Über uns</a></li>
+   <li><a href="<?php echo APP_ROOT;?>abos">Abos</a></li>
+   <li><a href="<?php echo APP_ROOT;?>products">Produkte</a></li>
  </ul>
 </div>
 
@@ -45,10 +45,10 @@ Hast du eine Frage?
 <div class="footer-socialmedia footer_item">
  <h3>Socialmedia</h3>
  <ul>
-   <li><a href="#" class="facebook">facebook</a></li>
-   <li ><a href="#" class="youtube">youtube</a></li>
-   <li ><a href="#" class="instagram">instagram</a></li>
-   <li ><a href="#" class="pinterest">pinterest</a></li>
+   <li><a href="https://www.facebook.com/" class="facebook">facebook</a></li>
+   <li ><a href="https://www.facebook.com/" class="youtube">youtube</a></li>
+   <li ><a href="https://www.instagram.com/" class="instagram">instagram</a></li>
+   <li ><a href="http://pinterst.com/" class="pinterest">pinterest</a></li>
  </ul>
 </div>
 </footer>
