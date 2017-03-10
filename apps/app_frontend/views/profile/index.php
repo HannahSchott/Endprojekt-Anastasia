@@ -7,7 +7,9 @@
     <p>In deinem Profil kannst du deine Kontaktdaten aktualisieren, deine Bestellungen
     verfolgen und Produkte bewerten.</p>
   </div>
-
+  <?php if( isset($success) && count($success) > 0 ) :?>
+    <p class="success_message"><?php echo $success; ?></p>
+  <?php endif;?>
   <div class="profile_uesrinformation">
     <div class="profile_adress">
       <h3>Deine Adresse</h3>
@@ -17,7 +19,7 @@
         <li><?php echo $user['adress'][0].' '.$user['adress'][1];?></li>
         <li><?php echo $user['adress'][2].' '.$user['adress'][3]?></li>
       </ul>
-      <a href="#" class="profile_editbutton">bearbeiten</a>
+      <a href="<?php echo APP_ROOT?>profile/edit/<?php echo sessions::get('uid');?>" class="profile_editbutton">Profil bearbeiten</a>
     <?php else : echo("<ul><li>Wir haben noch keine Adress von dir.</li></ul>");?>
       <?php endif;?>
     </div>
@@ -48,10 +50,10 @@
       <?php foreach($products as $product):?>
       <div class="featured_products-product">
         <div class="product-image">
-        <img src="public/img/productimages/<?php echo $product['main_img']; ?>" alt="<?php echo $product['slug']; ?>"/>
+        <img src="<?php echo APP_ROOT;?>public/img/productimages/<?php echo $product['main_img']; ?>" alt="<?php echo $product['slug']; ?>"/>
         </div>
         <div class="featrued_products-crowns">
-          <img src="public/img/crowns/<?php echo $product['comments_rating']; ?>.png" alt="crowns"/>
+          <img src="<?php echo APP_ROOT;?>public/img/crowns/<?php echo $product['comments_rating']; ?>.png" alt="crowns"/>
         </div>
         <h3><?php echo $product['name']; ?></h3>
         <p><a href="#" class="product_rate">bewerten</a>/<a href="#" class="product_comment">kommentiern</a></p>
