@@ -26,7 +26,7 @@ class products extends controller{
 
     foreach($categories as $categorie){
 
-      $html .= "<option value=".$categorie['name'];
+      $html .= "<option value=".$categorie['id'];
 
       if($categorie['name'] == $product_categorie['categorie_name']){
         $html .= " selected";
@@ -60,7 +60,6 @@ class products extends controller{
     $val = new validator();
     $val -> val($_POST['name'], "Name", true, "text", 6, 50);
     $val -> val($_POST['description'], "Beschreibung", true, "text", 20,500);
-    $val -> val($_FILES['picture']['name'], "Bild", false);
     $val -> val($_POST['link'], "Link", true, "textnumber", 20);
     $val -> val($_POST['price'], "Preis", true, "number", 2,4);
     $val  -> val($_POST['month'], "Monat", true, "number", 2, 2);
@@ -93,7 +92,7 @@ class products extends controller{
 
     foreach($categories as $categorie){
 
-      $html .= "<option value=".$categorie['name'].">".$categorie['name']."</option>";
+      $html .= "<option value=".$categorie['id'].">".$categorie['name']."</option>";
     }
 
     $html .= "</select>";
@@ -125,8 +124,8 @@ class products extends controller{
 
       // var_dump($result);
 
-      // header('Location:'.APP_ROOT.'backend/products/success');
-      // exit();
+      header('Location:'.APP_ROOT.'backend/products/success');
+      exit();
     }
   }
 
