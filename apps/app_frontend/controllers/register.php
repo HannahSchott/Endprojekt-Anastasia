@@ -62,7 +62,13 @@ class register extends controller{
           $mail -> AddAddress($_POST['f-email']);
           $mail -> Subject = 'Registrierung Anastasia';
           $mail -> Body = $message;
-          
+
+        // if(!$mail->send()) {
+        // echo false;
+        // echo 'error: ' . $mail->ErrorInfo;
+        // } else {
+        // echo true;
+        // }
         // Weiterleitung auf register/success
         header('Location:'.APP_ROOT.'register/success');
         exit();

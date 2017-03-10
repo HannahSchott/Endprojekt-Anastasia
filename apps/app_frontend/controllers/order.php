@@ -37,7 +37,9 @@ class order extends controller{
       $this -> view -> data['errors'] = $val -> getErrors();
 
       }else{
+
         $setOrder = $this -> model -> setOrder($abo_id);
+        // var_dump($setOrder);
         if($setOrder == true){
           header('Location:'.APP_ROOT.'anastasia');
           exit();

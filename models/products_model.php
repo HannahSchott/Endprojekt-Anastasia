@@ -94,10 +94,123 @@ class products_model extends model{
 
     $slug = str_replace(' ', '', $lower);
 
+    //File file upload
+
+    $target_dir = "public/img/productimages";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+    if(isset($_POST["submit"])){
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if($check !== false) {
+      echo "File is an image - " . $check["mime"] . ".";
+      $uploadOk = 1;
+      } else {
+      echo "Die Datei ist kein Bild";
+      $uploadOk = 0;
+      }
+
+      //File exists
+      if (file_exists($target_file)) {
+          echo "Das Bild existiert schon.";
+          $uploadOk = 0;
+      }
+
+      // File size
+      if ($_FILES["fileToUpload"]["size"] > 500000) {
+         echo "Das Bild ist zu groß.";
+         $uploadOk = 0;
+      }
+
+      // File Format
+      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+      && $imageFileType != "gif" ) {
+          echo "Das Bild muss vom Typ: JPG, JPEG, PNG & GIF sein.";
+          $uploadOk = 0;
+      }else{
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            echo "Das Bild ". basename( $_FILES["fileToUpload"]["name"]). " wurde erfolgreich hochgeladen.";
+        } else {
+            echo "Es gab leider einen Fehler.";
+        }
+      }
+    }
+
     $res = $this -> db -> query("UPDATE products SET name = '$name', slug = '$slug' , description = '$description', product_link ='$link',price= '$price', month_id ='$month_id' WHERE id = '$product_id'");
 
-    
+
     return true;
 
+  }
+
+  public function saveNewProduct()
+  {
+    $name = $this -> db -> real_escape_string($_POST['name']);
+    $description = $this -> db -> real_escape_string($_POST['description']);
+    $link = $this -> db -> real_escape_string($_POST['link']);
+    $price = $this -> db -> real_escape_string($_POST['price']);
+    $month = $this -> db -> real_escape_string($_POST['month']);
+    $year = $this -> db -> real_escape_string($_POST['year']);
+
+
+    $month_id = $month.'.'.$year;
+    //Slug
+    $slug = explode("-", $name);
+    $lower = "";
+    foreach($slug as $text){
+        $lower .= strtolower($text);
+    }
+
+    $slug = str_replace(' ', '', $lower);
+
+    //File file upload
+
+    $target_dir = APP_ROOT."public/img/productimages/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if($check !== false) {
+      echo "File is an image - " . $check["mime"] . ".";
+      $uploadOk = 1;
+      } else {
+      echo "Die Datei ist kein Bild";
+      $uploadOk = 0;
+      }
+
+      //File exists
+      if (file_exists($target_file)) {
+          echo "Das Bild existiert schon.";
+          $uploadOk = 0;
+      }
+
+      // File size
+      if ($_FILES["fileToUpload"]["size"] > 500000) {
+         echo "Das Bild ist zu groß.";
+         $uploadOk = 0;
+      }
+
+      // File Format
+      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+      && $imageFileType != "gif" ) {
+          echo "Das Bild muss vom Typ: JPG, JPEG, PNG & GIF sein.";
+          $uploadOk = 0;
+      }else{
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            echo "Das Bild ". basename( $_FILES["fileToUpload"]["name"]). " wurde erfolgreich hochgeladen.";
+        } else {
+            echo "Es gab leider einen Fehler.";
+        }
+      }
+
+
+    $is_active = 1;
+
+    $res = $this -> db -> query("INSERT INTO products (name,slug,description,product_link,price,month_id,is_active)  VALUES ('$name','$slug' ,'$description', '$link','$price', '$month_id' ,$is_active)");
+
+    return true;
   }
 }

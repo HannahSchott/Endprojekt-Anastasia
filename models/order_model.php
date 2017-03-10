@@ -28,8 +28,10 @@ class order_model extends model{
       $stmt = $this -> db -> prepare("INSERT INTO orders(user_id, `date-ordered`, abo_id, `order-status`) VALUES (?,?,?,?)");
       $stmt -> bind_param("iiii", $user_id, $timestamp, $abo_id, $order_status);
       $stmt -> execute();
-    }else{
 
+      return true;
+    }else{
+      return false;
     }
   }
 

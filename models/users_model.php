@@ -49,6 +49,7 @@ class users_model extends model{
       $abo_id = $_POST['abos'];
       $user_group = $_POST['usergroup'];
 
+      $this -> updateOrder($user_id);
       //Wenn Zahlungsmethode geänder wurde
       if(isset($_POST['payment'])){
         $payment = $_POST['payment'];
@@ -60,6 +61,14 @@ class users_model extends model{
     }else{
       $res = $this -> db -> query("UPDATE users SET lastname = '$lastname', firstname = '$firstname',  birthday = '$birthday',email = '$email', `newsletter` = '$newsletter', user_group = '$user_group' WHERE id = '$user_id'");
     }
+
+    return true;
+  }
+
+  public function updateOrder($user_id){
+
+    $abo_id = $_POST['abos'];
+    $res = $this -> db -> query("UPDATE orders SET abo_id = '$abo_id' WHERE user_id = '$user_id'");
 
     return true;
   }

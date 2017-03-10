@@ -80,6 +80,57 @@ class products extends controller{
     }
   }
 
+  public function newProduct()
+  {
+
+    if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST)) {
+        $this -> saveNewProduct();
+    }
+    $categories = $this -> model -> getAllCategoriesBackend();
+
+    $html = "<label for='categorie'>Kategorie</label><select name='categorie'>";
+
+
+    foreach($categories as $categorie){
+
+      $html .= "<option value=".$categorie['name'].">".$categorie['name']."</option>";
+    }
+
+    $html .= "</select>";
+
+    $this -> view -> data['categories'] = $html;
+    $this -> view -> render('products/newProduct', $this -> view -> data, $includeAll = false);
+  }
+
+  public function saveNewProduct()
+  {
+    $this -> view -> data['errors'] = [];
+    // Validation
+    $val = new validator();
+    $val -> val($_POST['name'], "Name", true, "text", 6, 50);
+    $val -> val($_POST['description'], "Beschreibung", true, "text", 20,500);
+    $val -> val($_POST['link'], "Link", true, "textnumber", 20);
+    $val -> val($_POST['price'], "Preis", true, "number", 2,4);
+    $val  -> val($_POST['month'], "Monat", true, "number", 2, 2);
+    $val -> val($_POST['year'], "Jahr", true, "number", 2,2);
+
+    if(count($val -> getErrors()) > 0) {
+      $this -> view -> data['errors'] = $val -> getErrors();
+    }else{
+      if(isset($this->view->data['errors']) && count($this->view->data['errors']) > 0){
+          return false;
+      }
+
+      $result = $this -> model -> saveNewProduct();
+
+      // var_dump($result);
+
+      // header('Location:'.APP_ROOT.'backend/products/success');
+      // exit();
+    }
+  }
+
+
   public function success()
   {
     $this -> view -> data['products'] = $this -> model -> getAllProductsBackend();

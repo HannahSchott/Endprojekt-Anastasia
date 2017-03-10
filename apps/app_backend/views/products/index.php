@@ -1,6 +1,7 @@
 <main>
   <div class="backend-wrapper">
     <h3>Produktverwaltung</h3>
+    <a href="<?php echo APP_ROOT?>backend/products/newProduct" class="backend-button">Neues Produkt</a>
     <?php if( isset($success) && count($success) > 0 ):?>
       <p class="success_message"><?php echo $success; ?></p>
     <?php endif;?>
