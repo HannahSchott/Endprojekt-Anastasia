@@ -218,14 +218,18 @@ ul{
 
 .about{
   margin-top: 50px;
-  margin-bottom: 50px;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 70%;
-
   line-height: 30px;
+
+  .about-text{
+    margin: 2em;
+    line-height: 2em;
+  }
 }
 
 //Abos

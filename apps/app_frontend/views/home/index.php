@@ -59,11 +59,14 @@
 
             <div class="about">
               <h2>Über uns</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              <p class="about-text">
+                Finden Sie den perfekten Lippenstift für verführerische Lippen-Make-ups und die
+                richtige Mascara für einen dramatischen Blick. Mit Ihrer
+                <i>Anastasia-Beautybox</i> können Sie sich Produktproben aus dem Kosmetikbereich
+                einfach nach Hause bestellen. Jeden Monat erhalten Sie jeweils fünf ausgewählte
+                Kosmetikproben über den <i>Anastasia</i>- Kosmetikversand geliefert. Erstellen
+                Sie gleich Ihr persönliches Beauty-Profil und erhalten Sie typgerechte
+                Make-up-Proben und die neusten Makeuptrends in Ihrer Kosmetikbox. <a class="header-link" href="<?php echo APP_ROOT;?>about">mehr</a>
               </p>
             </div>
     </main>
