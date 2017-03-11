@@ -55,12 +55,16 @@ Hast du eine Frage?
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
-<script src="<?php echo APP_ROOT; ?>/libs/jquery-3.1.1.min.js"></script>
+<script src="<?php echo APP_ROOT; ?>libs/jquery-3.1.1.min.js"></script>
 
 
 <?php
-if($_GET == null || $_GET["url"] == 'home' ||$_GET["url"] == 'test'){
-  echo "<script src=\"" . APP_ROOT . "/public/js/home-animation.js\"></script>";
+if($_GET == null || $_GET["url"] == 'home'){
+  echo "<script src=\"" . APP_ROOT . "public/js/home-animation.js\"></script>";
+}
+
+if($_GET['url'] == 'anastasia/'){
+    echo "<script src=\"" . APP_ROOT . "public/js/anastasia-animation.js\"></script>";
 }
 ?>
 <script src="<?php echo  APP_ROOT ?>/public/js/main.js"></script>

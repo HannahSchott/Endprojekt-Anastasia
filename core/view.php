@@ -28,6 +28,7 @@ class view{
 
         if($includeAll == true){
           require __DIR__ . '/../apps/app_frontend/' . APP_VIEWS . 'header.php';
+
         }else{
             require __DIR__ . '/../apps/'. CURRENT_APP . APP_VIEWS . 'header.php';
         }
