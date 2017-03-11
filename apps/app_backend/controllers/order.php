@@ -19,7 +19,7 @@ class order extends controller{
      $order['adress'] = $adress;
 
      $this -> view -> data['order'] = $order;
-    $this -> view -> render('order/detail', $this -> view -> data, $includeAll = false);
+     $this -> view -> render('order/detail', $this -> view -> data, $includeAll = false);
   }
 
   public function setOrderStatus($status_id)
@@ -30,5 +30,13 @@ class order extends controller{
     }else{
       return false;
     }
+  }
+
+  public function deletOrder($order_id)
+  {
+    $this -> model -> deletOrder($order_id);
+
+      $this -> index();
+
   }
 }

@@ -26,7 +26,7 @@
             <th>Gesendet</th>
           <?php endif;?>
           <th><a class="backend-button" href="<?php echo APP_ROOT?>backend/order/detail/<?php echo $order['id']; ?>">details</a></th>
-          <th><a class="backend-button" href="<?php echo APP_ROOT?>backend/order/delete/<?php echo $order['id']; ?>">löschen</a></th>
+          <th><a class="backend-button" href="<?php echo APP_ROOT?>backend/order/deletOrder/<?php echo $order['id']; ?>">fertig</a></th>
           </tr>
         <?php endforeach;?>
         </tbody>

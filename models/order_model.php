@@ -19,14 +19,14 @@ class order_model extends model{
 
       $data = ':'.$adress.':'.':'.$number.':'.':'.$zip.':'.':'.$city.':'.':'.$country.':';
       $timestamp = time();
-
+      $is_active = 1;
       //Adresse zu User speichern
       $res = $this -> db -> query("UPDATE users SET adress = '$data', payment = '$payment', `abo-id` = '$abo_id', `abo-timestamp` = '$timestamp' WHERE id = '$user_id'");
 
       //Bestellung speichern
       $order_status = '0';
-      $stmt = $this -> db -> prepare("INSERT INTO orders(user_id, `date-ordered`, abo_id, `order-status`) VALUES (?,?,?,?)");
-      $stmt -> bind_param("iiii", $user_id, $timestamp, $abo_id, $order_status);
+      $stmt = $this -> db -> prepare("INSERT INTO orders(user_id, `date-ordered`, abo_id, `order-status`, is_active) VALUES (?,?,?,?,?)");
+      $stmt -> bind_param("iiiii", $user_id, $timestamp, $abo_id, $order_status,$is_active);
       $stmt -> execute();
 
       return true;
@@ -50,7 +50,8 @@ class order_model extends model{
 
   public function getOrders()
   {
-    $res = $this -> db -> query("SELECT orders.id,orders.user_id, orders.abo_id, orders.`date-ordered`,orders.`order-status`, users.lastname, abos.name as abo_name FROM orders LEFT JOIN users ON orders.user_id = users.id LEFT JOIN abos ON orders.abo_id = abos.id");
+    $res = $this -> db -> query("SELECT orders.id,orders.user_id, orders.abo_id, orders.`date-ordered`,orders.`order-status`, users.lastname, abos.name as abo_name FROM orders LEFT JOIN users ON orders.user_id = users.id LEFT JOIN abos ON orders.abo_id = abos.id WHERE orders.is_active = 1");
+
 
     return $res -> fetch_all(MYSQLI_ASSOC);
   }
@@ -72,6 +73,15 @@ class order_model extends model{
     $stmt -> execute();
 
     return true;
+  }
+
+  public function deletOrder($order_id)
+  {
+    $is_active = 0;
+    $res = $this -> db -> query("UPDATE orders SET is_active = '$is_active' WHERE id = '$order_id'");
+
+  
+    // return true;
   }
 
 }
