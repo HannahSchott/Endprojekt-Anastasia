@@ -22,7 +22,7 @@
           <th><?php echo $product['price'];?>€</th>
           <th><?php echo $product['categorie_name'];?></th>
           <th><a class="backend-button" href="<?php echo APP_ROOT?>backend/products/edit/<?php echo $product['id']; ?>">bearbeiten</a></th>
-          <th><a class="backend-button" href="delete">löschen</a></th>
+          <th><a class="backend-button" href="<?php echo APP_ROOT?>backend/products/delete/<?php echo $product['id']; ?>">löschen</a></th>
         </tr>
       <?php endforeach; ?>
       </tbody>

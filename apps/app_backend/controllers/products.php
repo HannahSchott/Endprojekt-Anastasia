@@ -129,6 +129,12 @@ class products extends controller{
     }
   }
 
+  public function delete($product_id)
+  {
+    $this -> model -> deleteProduct($product_id);
+    $this -> success();
+  }
+
 
   public function success()
   {

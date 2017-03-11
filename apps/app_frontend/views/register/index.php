@@ -1,6 +1,6 @@
 <main>
   <div class="register-wrapper">
-    <h2>Registrieren</h2>
+    <h2>Registrieren <span class="helptext">(alle Felder müssen ausgefüllt werden)</span></h2>
     <?php if( isset($errors) && count($errors) > 0 ) {
       echo '<div class="errors">';
       foreach($errors as $error):
@@ -38,7 +38,7 @@
 
 
       <div class="form-group">
-        <label for="f-pw">Passwort</label>
+        <label for="f-pw">Passwort<br><span class="helptext">(mindestens ein Großbuchstabe und eine Zahl)</span></label>
         <input type="password" name="f-pw" id="f-pw" class="form-control ">
       </div>
 
