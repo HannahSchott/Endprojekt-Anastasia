@@ -4,7 +4,6 @@ class profile extends controller{
 
     public function index()
     {
-
       $user = $this -> model -> getUserData();
 
       if(isset($user['adress'])){
@@ -20,8 +19,33 @@ class profile extends controller{
       }
 
       $this -> view -> data['user'] = $user;
-      $this -> view -> data['products'] = $this -> model -> getCurrentProducts();
-      $this -> view -> render('profile/index', $this -> view -> data);
+
+      $products = $this -> model -> getCurrentProducts();
+
+      foreach($products as $key => $product){
+        $rating = $this -> model ->  getCurrentRating($product['id']);
+        $rated_by = $rating['rated_by'];
+        if(isset($rated_by) ||$rating['rated_by'] != NULL){
+          $user_ids = ltrim($rated_by, ":");
+          $user_ids = rtrim($user_ids, ":");
+          $user_ids = explode("::", $user_ids);
+          $user_id = sessions::get('uid');
+
+          if(in_array($user_id,$user_ids)){
+
+            $products[$key]['commented'] = "Kommentiert";
+          }
+        }
+
+        if($key == count($products) -1){
+
+          $this -> view -> data['products'] = $products;
+          $this -> view -> render('profile/index', $this -> view -> data);
+        }
+      }
+
+
+
     }
 
     public function edit($user_id)
@@ -124,7 +148,15 @@ class profile extends controller{
     {
       //aktuelle Rating
       $rating = $this -> model ->  getCurrentRating($product_id);
+      $rated_by = $rating['rated_by'];
+      $user_ids = ltrim($rated_by, ":");
+      $user_ids = rtrim($user_ids, ":");
+      $user_ids = explode("::", $user_ids);
+      $user_id = sessions::get('uid');
 
+      if(in_array($user_id,$user_ids)){
+        return false;
+      }
       //rating von Kunde
       //$_POST['crow_id'];
       $new_rating_string = $_POST['rating'];;
@@ -149,7 +181,8 @@ class profile extends controller{
 
 
       $rating_rounded = round($rating * 2)/2;
-      $res =  $this -> model -> setNewRating($rating_rounded,$new_count, $product_id);
+
+      $res =  $this -> model -> setNewRating($rating_rounded,$new_count, $product_id, $rated_by);
 
     }
 }

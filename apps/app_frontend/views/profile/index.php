@@ -1,13 +1,10 @@
 <main class="profile">
-  <?php
-
-  ?>
   <div class="profile_welcome">
     <h3>Hallo, <strong class="profile_strong"><?php echo sessions::get('firstname'); ?>!</strong></h2>
     <p>In deinem Profil kannst du deine Kontaktdaten aktualisieren, deine Bestellungen
     verfolgen und Produkte bewerten.</p>
   </div>
-  <?php if( isset($success) && count($success) > 0 ) :?>
+  <?php if(isset($success) && count($success) > 0 ) :?>
     <p class="success_message"><?php echo $success; ?></p>
   <?php endif;?>
   <div class="profile_uesrinformation">
@@ -48,10 +45,12 @@
     <div class="profile_products-wrapper">
 
       <?php foreach($products as $product):?>
+
       <div class="featured_products-product">
         <div class="product-image">
         <a href="<?php echo APP_ROOT?>products/detail/<?php echo $product['id']?>"><img src="<?php echo APP_ROOT;?>public/img/productimages/<?php echo $product['main_img']; ?>" alt="<?php echo $product['slug']; ?>"/></a>
         </div>
+        <?php if(!isset($product['commented'])):?>
         <div class="featrued_products-crowns" id="<?php echo $product['id'];?>">
           <div class="crown_5 crown" id="crown_5"></div>
           <div class="crown_4 rating_5 crown" id="crown_4"></div>
@@ -59,6 +58,9 @@
           <div class="crown_2 rating_3 rating_4 rating_5 crown" id="crown_2"></div>
           <div class="crown_1 rating_3 rating_4 rating_5 crown" id="crown_1"></div>
         </div>
+      <?php else:?>
+        <?php echo($product['commented'])?>
+      <?php endif;?>
         <h3><?php echo $product['name']; ?></h3>
         <p><a href="<?php echo APP_ROOT?>products/detail/<?php echo $product['id']?>" class="product_comment">kommentiern</a></p>
       </div>

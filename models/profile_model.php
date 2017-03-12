@@ -8,7 +8,7 @@
      $year = date("y");
      $current_month = $month . "." . $year;
 
-     $res = $this -> db -> query("SELECT id, name,slug,comments_rating,main_img FROM products WHERE month_id = '$current_month' LIMIT 5");
+     $res = $this -> db -> query("SELECT id, name,slug,comments_rating, rated_by,main_img FROM products WHERE month_id = '$current_month' LIMIT 5");
 
      return ($res -> fetch_all(MYSQLI_ASSOC));
    }
@@ -85,14 +85,17 @@
 
    public function getCurrentRating($product_id)
    {
-     $res = $this -> db -> query("SELECT comments_rating, rating_count FROM products WHERE id = '$product_id'");
+     $res = $this -> db -> query("SELECT comments_rating, rating_count, rated_by FROM products WHERE id = '$product_id'");
 
      return $res -> fetch_assoc();
    }
 
-   public function setNewRating($rating, $count, $product_id)
+   public function setNewRating($rating, $count, $product_id,$rated_by)
    {
-     $res = $this -> db -> query("UPDATE products SET comments_rating = '$rating', rating_count = '$count'  WHERE id = '$product_id' ");
+     echo $rated_by;
+     $user_id = sessions::get('uid');
+     $rated_by .= ":".$user_id.":";
+     $res = $this -> db -> query("UPDATE products SET comments_rating = '$rating', rating_count = '$count', rated_by = '$rated_by'  WHERE id = '$product_id' ");
 
    }
  }
