@@ -30,7 +30,11 @@
     <a href="<?php echo APP_ROOT?>products/detail/<?php echo $product['id']?>"><img src="<?php echo APP_ROOT?>public/img/productimages/<?php echo $product['main_img']; ?>" alt="<?php echo $product['slug']; ?>"/></a>
     </div>
     <div class="featrued_products-crowns">
-      <img src="<?php echo APP_ROOT?>public/img/crowns/<?php echo $product['comments_rating']?>.png" alt="crowns"/>
+      <?php if(!isset($product['comments_rating'])):?>
+        <p>Diese Produkt hat noch keine Bewertungen</p>
+      <?php else:?>
+        <img src="<?php echo APP_ROOT?>public/img/crowns/<?php echo $product['comments_rating']?>.png" alt="crowns"/>
+      <?php endif;?>  
     </div>
     <h3><?php echo $product['product_name']; ?></h3>
   </div>

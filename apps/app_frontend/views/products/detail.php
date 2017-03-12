@@ -7,7 +7,12 @@
 
     <div class="product-detail_description">
       <div class="crowns">
-        <img src="<?php echo APP_ROOT;?>public/img/crowns/<?php echo $product['comments_rating']?>.png" alt="berwertung <?php echo $product['comments_rating']; ?>">
+        <?php if(!isset($product['comments_rating'])):?>
+          <p>Diese Produkt hat noch keine Bewertungen</p>
+        <?php else:?>
+          <img src="<?php echo APP_ROOT?>public/img/crowns/<?php echo $product['comments_rating']?>.png" alt="crowns"/>
+        <?php endif;?> 
+
       </div>
 
       <h3><?php echo $product['name'] ?></h3>
