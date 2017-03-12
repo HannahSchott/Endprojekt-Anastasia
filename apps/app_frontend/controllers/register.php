@@ -31,11 +31,7 @@ class register extends controller{
       //birthday
 
       if(count($val -> getErrors()) > 0) {
-      // Hier kommen die errors
-      $this -> view -> data['errors'] = $val -> getErrors();
-      // Es gibt Fehler
-      $this -> view -> data['errors'] = $val -> getErrors();
-
+        $this -> view -> data['errors'] = $val -> getErrors();
       }else{
 
         // Hier prüfe ich ob der username/ schon existiert
@@ -44,11 +40,7 @@ class register extends controller{
         }
 
         if(isset($this->view->data['errors']) && count($this->view->data['errors']) > 0){
-
-
             return false;
-            echo('Falsch');
-
         }
 
 
@@ -60,18 +52,18 @@ class register extends controller{
           $mail -> IsHTML(true);
           $mail -> SetFrom("hannah.schott@hotmail.com", "Hannah Schott");
           $mail -> AddAddress($_POST['f-email']);
-          $mail -> Subject = 'Registrierung Anastasia';
+          $mail -> Subject = 'Registrierung Anastasia-Beautyboxen';
           $mail -> Body = $message;
 
-        // if(!$mail->send()) {
-        // echo false;
-        // echo 'error: ' . $mail->ErrorInfo;
-        // } else {
-        // echo true;
-        // }
+        if(!$mail->send()) {
+        echo false;
+        echo 'error: ' . $mail->ErrorInfo;
+        } else {
+        echo true;
+        }
         // Weiterleitung auf register/success
-        header('Location:'.APP_ROOT.'register/success');
-        exit();
+        // header('Location:'.APP_ROOT.'register/success');
+        // exit();
 
       }
     }
@@ -81,4 +73,29 @@ class register extends controller{
   {
       $this -> view -> render('register/success');
   }
+
+  public function activate($hash)
+{
+
+  //Text ausgeben!
+    if($this -> model -> checkIfHashExist($hash)) {
+
+        if($this -> model -> checkIfUserIsActiveByHash($hash) === false) {
+
+            $this -> model -> activateUserByHash($hash);
+            $this -> view -> data['headline'] = "Danke";
+            $this -> view -> data['text'] = "Dein Account wurde aktiviert. Du kannst dich nun <a href='/login'>einloggen</a>";
+        }else{
+            $this -> view -> data['headline'] = "Es gab einen Fehler";
+            $this -> view -> data['text'] = "Dein Account wurde bereits aktiviert";
+        }
+    }else{
+        $this -> view -> data = [
+            'headline' => "Es gab einen Fehler",
+            'text' => "Etwas hat leider nicht geklappt!"
+        ];
+    }
+
+    $this -> view -> render('register/activate', $this -> view -> data);
+}
 }
