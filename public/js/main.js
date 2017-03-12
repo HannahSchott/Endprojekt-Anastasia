@@ -205,6 +205,19 @@ $(document).on('click', finishButton, function(event){
   });
 
 });
+
+
+// Animationen ?
+var question = $('.question-text');
+
+question.css('border', '1px solid red');
+TweenLite.fromTo(question, 1.0,
+{
+  autoAlpha: 0,
+},
+{
+autoAlpha: 1
+});
 //  Productsorting add Class
 
   $('.categorie').on('click', function(event){

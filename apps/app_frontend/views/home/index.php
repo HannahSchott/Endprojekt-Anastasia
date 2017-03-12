@@ -36,7 +36,7 @@
                   Das Anastasia 3 Monats Abo ist perfekt für Neukundinnen.
                 </p>
                 <!-- <a href="#" class="btn-0">abonnieren</a> -->
-                <div class="abos-button abos-button__three_months"><a href="<?php echo APP_ROOT?>order/1">abonnieren</a></div>
+                <div class="abos-button abos-button__three_months"><a href="<?php echo APP_ROOT?>order/index/1">abonnieren</a></div>
               </div>
 
               <div class="abos-element abos-six_months">
@@ -45,7 +45,7 @@
                 <p>
                   6 Monate Anastasia Beauty Boxen direkt vor deine Haustür! Probier es gleich aus.
                 </p>
-                <div class="abos-button abos-button__six_months"><a href="<?php echo APP_ROOT?>order/2">abonnieren</a></div>
+                <div class="abos-button abos-button__six_months"><a href="<?php echo APP_ROOT?>order/index/2">abonnieren</a></div>
               </div>
               <div class="abos-element abos-one_year">
                 <h4>1-Jahres-Abo</h4>
@@ -53,7 +53,7 @@
                 <p>
                   Ein ganzes Jahr jedes Monate eine neue auf dich zugeschnitte Box? Gleich hier bestellen
                 </p>
-                <div class="abos-button abos-button__one_year"><a href="<?php echo APP_ROOT?>order/3">abonnieren</a></div>
+                <div class="abos-button abos-button__one_year"><a href="<?php echo APP_ROOT?>order/index/3">abonnieren</a></div>
               </div>
             </div>
 

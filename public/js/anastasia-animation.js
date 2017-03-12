@@ -59,5 +59,6 @@ $(document).ready(function () {
       delay: 2
 
     });
+
 //DOCUMENT READY END
 });
