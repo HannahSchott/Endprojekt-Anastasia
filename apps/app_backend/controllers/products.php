@@ -75,8 +75,8 @@ class products extends controller{
       $error = $this -> model -> saveEdit($product_id);
       // var_dump($error);
       if(count($error) == 0 || !isset($error)){
-        // header('Location:'.APP_ROOT.'backend/products/success');
-        // exit();
+        header('Location:'.APP_ROOT.'backend/products/success');
+        exit();
       }else{
         $this -> view -> data['errors'] = $error;
       }
@@ -114,6 +114,7 @@ class products extends controller{
     $val -> val($_POST['name'], "Name", true, "text", 6, 50);
     $val -> val($_POST['description'], "Beschreibung", true, "text", 20,500);
     $val -> val($_POST['link'], "Link", true, "textnumber", 20);
+    $val -> val($_FILES, "Bild", true);
     $val -> val($_POST['price'], "Preis", true, "number", 2,4);
     $val  -> val($_POST['month'], "Monat", true, "number", 2, 2);
     $val -> val($_POST['year'], "Jahr", true, "number", 2,2);
