@@ -55,12 +55,7 @@ class register extends controller{
           $mail -> Subject = 'Registrierung Anastasia-Beautyboxen';
           $mail -> Body = $message;
 
-        if(!$mail->send()) {
-        echo false;
-        echo 'error: ' . $mail->ErrorInfo;
-        } else {
-        echo true;
-        }
+
         // Weiterleitung auf register/success
         // header('Location:'.APP_ROOT.'register/success');
         // exit();

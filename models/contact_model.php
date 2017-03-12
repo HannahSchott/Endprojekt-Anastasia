@@ -23,10 +23,12 @@ class contact_model extends model{
     return $res -> fetch_assoc();
   }
 
-  public function sendAnser($subject, $answer)
+  public function sendAnswer($contact_id)
   {
-
-    //HIER: Email weg schicken!!
+    $answered_at = time();
+    $res = $this -> db -> query("UPDATE contact SET answered_at = '$answered_at' WHERE id = '$contact_id'");
+    
     return true;
   }
+
 }

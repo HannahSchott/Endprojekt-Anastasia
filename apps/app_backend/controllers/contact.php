@@ -17,7 +17,7 @@ class contact extends controller{
   public function answer($contact_id)
   {
     if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST)) {
-        $this -> sendAnswer();
+        $this -> sendAnswer($contact_id);
     }
     $this -> view -> data['contact'] = $this -> model -> getContact($contact_id);
     $this -> view -> render('contact/answer', $this -> view -> data, $includeAll = false);
@@ -29,11 +29,24 @@ class contact extends controller{
     $this -> view -> render('contact/index', $this -> view -> data, $includeAll = false);
   }
 
-  public function sendAnswer()
+  public function sendAnswer($contact_id)
   {
+
     $subject = $_POST['subject'];
+    $answer = $_POST['message'];
+    //Kunden Email
+    $email = $_POST['email'];
+
+    // E-Mail wegsenden
     $answer = $_POST['answer'];
-    $this -> model -> sendAnser($subject, $answer);
+    $mail = new PHPMailer();
+    $mail -> IsHTML(true);
+    $mail -> SetFrom("hannah.schott@hotmail.com", "Anastasia");
+    $mail -> AddAddress($email);
+    $mail -> Subject = $subject;
+    $mail -> Body = $answer;
+
+    $this -> model -> sendAnswer($contact_id);
     header('Location:'.APP_ROOT.'backend/contact/success');
     exit();
   }

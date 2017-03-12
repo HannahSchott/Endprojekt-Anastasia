@@ -32,6 +32,8 @@
         }?>
 
         <div class="form-group">
+          <label for="email">An</label>
+          <input type="email" name="email" value="<?php echo $contact['email'];?>">
           <label for="subject">Betreff</label>
           <input type="text" name="subject" value="Re: <?php echo $contact['subject'];?>">
         </div>
