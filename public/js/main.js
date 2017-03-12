@@ -33,7 +33,6 @@ $(document).ready(function () {
 
   menuButton.on('click', function () {
     $(this).toggleClass('active');
-    console.log('clickbutton');
     if (open) {
       timeline.reverse();
       open = false;
@@ -44,7 +43,6 @@ $(document).ready(function () {
   });
 
   menu.on('click', function(){
-    console.log('bodyonclick');
     if(open){
       timeline.reverse();
       open = false;
