@@ -56,9 +56,9 @@ class register extends controller{
           $mail -> Body = $message;
 
 
-        // Weiterleitung auf register/success
-        // header('Location:'.APP_ROOT.'register/success');
-        // exit();
+        //Weiterleitung auf register/success
+        header('Location:'.APP_ROOT.'register/success');
+        exit();
 
       }
     }
