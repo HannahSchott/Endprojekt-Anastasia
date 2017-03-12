@@ -83,5 +83,16 @@
      return true;
    }
 
+   public function getCurrentRating($product_id)
+   {
+     $res = $this -> db -> query("SELECT comments_rating, rating_count FROM products WHERE id = '$product_id'");
 
+     return $res -> fetch_assoc();
+   }
+
+   public function setNewRating($rating, $count, $product_id)
+   {
+     $res = $this -> db -> query("UPDATE products SET comments_rating = '$rating', rating_count = '$count'  WHERE id = '$product_id' ");
+
+   }
  }

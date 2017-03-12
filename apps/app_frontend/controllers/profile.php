@@ -119,4 +119,37 @@ class profile extends controller{
       $this -> view -> data['products'] = $this -> model -> getCurrentProducts();
       $this -> view -> render('profile/index', $this -> view -> data);
     }
+
+    public function setRating($product_id)
+    {
+      //aktuelle Rating
+      $rating = $this -> model ->  getCurrentRating($product_id);
+
+      //rating von Kunde
+      //$_POST['crow_id'];
+      $new_rating_string = $_POST['rating'];;
+
+      $user_rating = explode("_",$new_rating_string);
+
+
+      //Neues Rating berechnen
+      //Ratings DB
+      $rating_db = floatval($rating['comments_rating']);
+      //Count DB
+      $count_db = floatval($rating['rating_count']);
+
+      $old_rating = floatval($rating_db * $count_db);
+
+      $new_count = floatval($count_db + 1);
+
+      $new_rating = floatval($old_rating + $user_rating[1]);
+      //
+      // var_dump($old_rating, $user_rating[0]);
+      $rating = $new_rating / $new_count;
+
+
+      $rating_rounded = round($rating * 2)/2;
+      $res =  $this -> model -> setNewRating($rating_rounded,$new_count, $product_id);
+
+    }
 }

@@ -46,6 +46,30 @@ $(document).ready(function () {
 
   //Kernfeature
 
+
+  //Weiter Button Welcome text
+var button = $('.welcome-text').find('a');
+
+button.on('click', function(event){
+  event.preventDefault();
+  console.log('button');
+  $.ajax({
+    type:"POST",
+    url:"http://localhost:8888/Endprojekt-Anastasia/anastasia/getPageContent/2",
+  }).done(function(data, textStatus, jqXhr){
+    var bookwrapper = $('.book-wrapper');
+    var databookwrapper = $(data).find('.book-wrapper');
+
+    var buttons = $('.button-wrapper');
+    var databuttons = $(data).find('.button-wrapper');
+    var main = $('.main_book');
+
+    main.append(databuttons);
+    bookwrapper.replaceWith(databookwrapper);
+
+  });
+
+});
   //Next Button
   var ButtonNext = $('.button-next');
 
@@ -65,39 +89,39 @@ $(document).ready(function () {
 
   function getNewQuestion(page_id){
     event.preventDefault();
-    console.log('getNewQuestion');
+
+    $name = 'answer_count_'+page_id;
 
     //Answer Count Berechnen
-    if(localStorage.getItem('answer_count') == null){
-       localStorage.setItem('answer_count', '0');
-       var old_count = parseFloat(localStorage.getItem('answer_count'));
-       var count = parseFloat(localStorage.getItem('answer_count:'+page_id));
-       var new_count = old_count + count;
-       localStorage.setItem('answer_count', new_count);
-    }else{
-      var old_count = parseFloat(localStorage.getItem('answer_count'));
-      var count = parseFloat(localStorage.getItem('answer_count:'+page_id));
+    if(page_id != 9){
+      if(localStorage.getItem('count') == null || localStorage.getItem('count') == 0){
+        localStorage.setItem('count', 0);
+        var old_count = parseFloat(localStorage.getItem('count'));
+        var current_count = parseFloat(localStorage.getItem($name));
+        var new_count = old_count + current_count;
+        localStorage.setItem('count', new_count);
+      }else{
+        var old_count = parseFloat(localStorage.getItem('count'));
+        var current_count = parseFloat(localStorage.getItem($name));
+        var new_count = old_count + current_count;
+        localStorage.setItem('count', new_count);
+      }
 
-      var new_count = old_count + count;
-      localStorage.setItem('answer_count', new_count);
+      //Antwort string erstellen
+      if(localStorage.getItem('answers') == null){
+        localStorage.setItem('answers', '');
+        var old_answers = localStorage.getItem('answers');
+        var current_answer = localStorage.getItem(page_id);
+        var new_answers = localStorage.setItem('answers', current_answer);
+      }else{
+        var old_answers = localStorage.getItem('answers');
+        var current_answer = localStorage.getItem(page_id);
+        var new_answers = localStorage.setItem('answers', old_answers+','+current_answer);
+      }
     }
 
-    //Antwort string erstellen
-    if(localStorage.getItem('answers') == null){
-      localStorage.setItem('answers', '');
-      var old_answers = localStorage.getItem('answers');
-      var current_answer = localStorage.getItem(page_id);
-
-      var new_answers = localStorage.setItem('answers', current_answer);
-    }else{
-      var old_answers = localStorage.getItem('answers');
-      var current_answer = localStorage.getItem(page_id);
-
-      var new_answers = localStorage.setItem('answers', old_answers+','+current_answer);
-    }
 
     var current_answers = localStorage.getItem('answers');
-    console.log(current_answers);
 
     $.ajax({
       type: 'POST',
@@ -134,18 +158,24 @@ $(document).ready(function () {
     var parent = target.parent();
     var img = parent.find('.answer_img');
 
-
-
     var img_attr = img.attr('alt');
-    var img_id = img.attr('id');
-
+    var img_id = parseFloat(img.attr('id'));
     //page_answer_count setzen damit er überschrieben werden kann
-    //Antworten die keine Auswirkung auf ergebniss haben sollen
-    localStorage.setItem(page_id, img_attr);
-    if(page_id == 4 || page_id == 5 || page_id == 9){
-      localStorage.setItem('answer_count:'+page_id, '0');
+    //Antworten die keine Auswirkung auf Ergebniss haben sollen
+    if(page_id >= 9) {
+      return false;
     }else{
-      localStorage.setItem('answer_count:'+page_id, img_id);
+      localStorage.setItem(page_id, img_attr);
+    }
+    //Answer Count zum Typberechnen
+    if(page_id == 4 || page_id == 5){
+      $name = 'answer_count_'+page_id;
+      localStorage.setItem($name, 0);
+    }else if( page_id >= 9) {
+      return false;
+    }else{
+      $name = 'answer_count_'+page_id;
+      localStorage.setItem($name, img_id);
     }
 
     $('.answer_img__selected').removeClass('answer_img__selected');
@@ -161,16 +191,18 @@ $(document).on('click', finishButton, function(event){
   event.preventDefault();
 
   var answers = localStorage.getItem('answers');
-
+  var count = localStorage.getItem('count');
 
   $.ajax({
     type: "POST",
     url: 'http://localhost:8888/Endprojekt-Anastasia/anastasia/setAnswers/',
-    data: {'answers': answers},
-    success: function (data) {
-      window.location.href = 'http://localhost:8888/Endprojekt-Anastasia/home';
-  }
-});
+    data: {'answers': answers, 'count' : count},
+    success: function (data,status) {
+      console.log(data);
+      localStorage.clear();
+      // window.location.href = 'http://localhost:8888/Endprojekt-Anastasia/home';
+    }
+  });
 
 });
 //  Productsorting add Class
@@ -259,12 +291,11 @@ $(document).on('click', finishButton, function(event){
       var status = href.substr(href.length - 1);
 
       var order_id = $('h3').attr('id');
-      console.log(order_id);
-      console.log(status);
+
       $.ajax({
         type: "POST",
         url:"http://localhost:8888/Endprojekt-Anastasia/backend/order/SetOrderStatus/"+status,
-        data:{order_id:order_id},
+        data:{'order_id':order_id},
         success: function(data, status){
 
           $('.abo_progress--complete').removeClass('abo_progress--complete');
@@ -276,6 +307,63 @@ $(document).on('click', finishButton, function(event){
       })
 
   });
+
+  //Rating
+
+  var crown = ".crown";
+
+  $(document).on('click', crown,function(event){
+      event.preventDefault();
+      event.stopPropagation();
+
+    var current_crown = $(event.target);
+    var rating = current_crown.attr('id');
+
+    var div = current_crown.parent();
+    var product_id = div.attr('id');
+
+
+      $.ajax({
+        type: "POST",
+        url:"http://localhost:8888/Endprojekt-Anastasia/profile/setRating/"+product_id,
+        data:{'rating':rating},
+        success: function(data, status){
+          console.log(status);
+          console.log(data);
+        }
+      });
+
+  });
+
+
+
+
+
+
+
+
+  // $(document).on('click', crown, function(event){
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   var crown = $(event.target);
+  //   var crown_id = crown.attr('id');
+  //   var wrapper = crown.parent();
+  //   var product_id = wrapper.attr('id');
+  //   console.log('product_id: '+product_id);
+  //   console.log('crown_id: '+crown_id);
+  //   $.ajax({
+  //     type: "POST",
+  //     url:"http://localhost:8888/Endprojekt-Anastasia/backend/profile/setRating/"+product_id,
+  //     data:{'crown_id':crown_id},
+  //     success: function(data, status){
+  //       console.log(data);
+  //       console.log(status);
+  //     }
+  //
+  //   });
+  //
+  //
+  // });
 //Dokument Readey Funktion END
 });
 

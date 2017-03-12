@@ -55,7 +55,7 @@ class products_model extends model{
   public function getAllProductsBackend()
   {
 
-    $res = $this -> db -> query("SELECT products.id, products.slug, products.main_img, products.name as product_name, products.price, categories.name as categorie_name FROM products LEFT JOIN categories ON products.`categories-id` = categories.id");
+    $res = $this -> db -> query("SELECT products.id, products.slug, products.main_img, products.name as product_name, products.price, categories.name as categorie_name FROM products LEFT JOIN categories ON products.`categories-id` = categories.id WHERE is_active = '1' ORDER BY id ASC");
 
     return $res -> fetch_all(MYSQLI_ASSOC);
   }
@@ -231,6 +231,12 @@ class products_model extends model{
         return false;
       }
     }
+  }
 
+  public function deleteProduct($product_id)
+  {
+    $res = $this -> db -> query("UPDATE products SET is_active = '0' WHERE id ='$product_id'");
+
+    return true;
   }
 }

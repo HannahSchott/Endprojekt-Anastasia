@@ -321,7 +321,8 @@ ul {
 
 .featrued_products-crowns img {
   box-sizing: border-box;
-  width: 15em;
+  width: auto;
+  height: 2em;
   overflow: hidden; }
 
 .crowns {
@@ -562,6 +563,7 @@ ul {
     background-repeat: no-repeat;
     width: 50px; }
     .featrued_products-crowns .crown:hover {
+      cursor: pointer;
       background-image: url(../img/rating/crown_colored.png); }
   .featrued_products-crowns .crown_2:hover ~ .crown_1 {
     background-image: url(../img/rating/crown_colored.png); }
@@ -617,6 +619,10 @@ ul {
       border: none;
       border-bottom: 2.5px solid #F05014;
       font-size: 15pt; }
+
+.helptext {
+  font-size: 10pt;
+  font-family: "Raleway"; }
 
 .register-button {
   background-color: #89145C;
@@ -871,6 +877,7 @@ footer {
     padding: 10%;
     color: #fff; }
     .content-wrapper .welcome-text h3 {
+      margin-bottom: 1em;
       text-align: center; }
   .content-wrapper .button {
     margin: 20px auto;

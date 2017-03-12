@@ -1,6 +1,4 @@
-<main>
-  <p id="current"></p>
-  <p id="other"></p>
+<main class="main_book">
   <?php if($page_id > 1) :?>
   <div class="button-wrapper">
       <a href="<?php echo APP_ROOT;?>anastasia/getPageContent/<?php echo $page_id - 1;?>" class="button button-back"  id=<?php echo $page_id -1; ?>>zrück</a>
