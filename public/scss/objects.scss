@@ -28,19 +28,16 @@ ul{
 }
 
 .mobile-menu{
-  display: none;
-  position: absolute;
-  // top: 87px;
-  // left: 90px;
-  background-color: rgba(25,25,25,0.9);
-  height: 100vh;
-  width: 100vh;
-  margin-top: 295px;
-  z-index: 2;
-  align-items: center;
-  justify-content: center;
-  overflow-y: hidden;
-  position: fixed;
+display: none;
+background-color: rgba(25, 25, 25, 0.9);
+height: 100vh;
+width: 100vw;
+margin-top: -5em;
+padding-top: 6em;
+z-index: 2;
+overflow: hidden;
+justify-content: center;
+
 
   ul{
     li{
@@ -48,6 +45,10 @@ ul{
       a{
         margin: 20px;
         color: #fff;
+
+        &:hover{
+          border-bottom: 1px solid #fff;
+        }
       }
 
     }
@@ -57,18 +58,19 @@ ul{
 
 ///TEST ENDE
 .menu-button {
-  border: 0;
-  background-color: map-get($colors, purple);
-  padding: 15px;
-  border-radius: 50px;
-  margin: 10px;
-  margin-right: 45px;
-  width: 60px;
-  height: 60px;
+  // border: 0;
+  // background-color: map-get($colors, purple);
+  // padding: 15px;
+  // border-radius: 50px;
+  // margin: 10px;
+  // margin-right: 45px;
+  // width: 60px;
+  height: 2em;
+    width: 2.3em;
   outline: none;
   cursor: pointer;
-
-  right: 0px;
+  top: 1.6em;
+  right: 2em;
   position: fixed;
 
 

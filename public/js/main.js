@@ -31,9 +31,9 @@ $(document).ready(function () {
     css:{display:'flex'}
   })
 
-
   menuButton.on('click', function () {
     $(this).toggleClass('active');
+    console.log('clickbutton');
     if (open) {
       timeline.reverse();
       open = false;
@@ -41,6 +41,15 @@ $(document).ready(function () {
       timeline.play();
       open = true;
     }
+  });
+
+  menu.on('click', function(){
+    console.log('bodyonclick');
+    if(open){
+      timeline.reverse();
+      open = false;
+    }
+
   });
 
 
