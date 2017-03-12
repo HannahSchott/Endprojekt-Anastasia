@@ -64,16 +64,16 @@ button.on('click', function(event){
     var databuttons = $(data).find('.button-wrapper');
     var main = $('.main_book');
 
-    main.append(databuttons);
+    main.before(databuttons);
     bookwrapper.replaceWith(databookwrapper);
 
   });
 
 });
   //Next Button
-  var ButtonNext = $('.button-next');
+  var ButtonNext = '.button-next';
 
-  ButtonNext.on('click', function(event){
+  $(document).on('click', ButtonNext, function(event){
     var page_id = $(this).attr('id');
     getNewQuestion(page_id);
   });
@@ -200,7 +200,7 @@ $(document).on('click', finishButton, function(event){
     success: function (data,status) {
       console.log(data);
       localStorage.clear();
-      // window.location.href = 'http://localhost:8888/Endprojekt-Anastasia/home';
+      window.location.href = 'http://localhost:8888/Endprojekt-Anastasia/home';
     }
   });
 
