@@ -33,7 +33,7 @@ class profile extends controller{
 
           if(in_array($user_id,$user_ids)){
 
-            $products[$key]['commented'] = "Kommentiert";
+            $products[$key]['commented'] = "Dieses Produkt hast du schon Bewertet";
           }
         }
 
