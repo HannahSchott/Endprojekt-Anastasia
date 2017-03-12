@@ -96,51 +96,56 @@ class products_model extends model{
 
     //File file upload
 
-    $target_dir = "public/img/productimages";
+    $target_dir = "../public/img/productimages/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-    if(isset($_POST["submit"])){
+    if(isset($_FILES) && $_FILES["fileToUpload"]["size"] != 0){
+      $error = [];
       $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
       if($check !== false) {
-      echo "File is an image - " . $check["mime"] . ".";
+      // $error[] = "Das Bild hat den Typ - " . $check["mime"] . ".";
       $uploadOk = 1;
       } else {
-      echo "Die Datei ist kein Bild";
+      $error[] = "Die Datei ist kein Bild";
       $uploadOk = 0;
       }
 
       //File exists
       if (file_exists($target_file)) {
-          echo "Das Bild existiert schon.";
+          $error[]= "Das Bild existiert schon.";
           $uploadOk = 0;
       }
 
       // File size
       if ($_FILES["fileToUpload"]["size"] > 500000) {
-         echo "Das Bild ist zu groß.";
+         $error[] = "Das Bild ist zu groß.";
          $uploadOk = 0;
       }
 
       // File Format
       if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
       && $imageFileType != "gif" ) {
-          echo "Das Bild muss vom Typ: JPG, JPEG, PNG & GIF sein.";
+          $error[] = "Das Bild muss vom Typ: JPG, JPEG, PNG & GIF sein.";
           $uploadOk = 0;
       }else{
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "Das Bild ". basename( $_FILES["fileToUpload"]["name"]). " wurde erfolgreich hochgeladen.";
-        } else {
-            echo "Es gab leider einen Fehler.";
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) && $uploadOk == 1 ) {
+          $filename = $_FILES["fileToUpload"]["name"];
+          $res = $this -> db -> query("UPDATE products SET name = '$name', slug = '$slug' , description = '$description', product_link ='$link',price= '$price', main_img = '$filename', `categories-id` = '$categorie_id',month_id ='$month_id' WHERE id = '$product_id'");
+
+        // "Das Bild ". basename( $_FILES["fileToUpload"]["name"]). " wurde erfolgreich hochgeladen.";
+        }else{
+          return $error;
+            // $error[] = "Es gab leider einen Fehler.";
         }
       }
+    }else{
+      $res = $this -> db -> query("UPDATE products SET name = '$name', slug = '$slug' , description = '$description', product_link ='$link',price= '$price', `categories-id` = '$categorie_id',month_id ='$month_id' WHERE id = '$product_id'");
     }
 
-    $res = $this -> db -> query("UPDATE products SET name = '$name', slug = '$slug' , description = '$description', product_link ='$link',price= '$price', `categories-id` = '$categorie_id',month_id ='$month_id' WHERE id = '$product_id'");
 
 
-    return true;
 
   }
 
@@ -180,7 +185,7 @@ class products_model extends model{
       // echo "Die Datei ist kein Bild";
       // $uploadOk = 0;
       // }
-
+      //
       // //File exists
       // if (file_exists($target_file)) {
       //     echo "Das Bild existiert schon.";

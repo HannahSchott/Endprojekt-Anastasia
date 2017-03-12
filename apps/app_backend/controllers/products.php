@@ -72,10 +72,15 @@ class products extends controller{
           return false;
       }
 
-      $this -> model -> saveEdit($product_id);
+      $error = $this -> model -> saveEdit($product_id);
+      // var_dump($error);
+      if(count($error) == 0 || !isset($error)){
+        // header('Location:'.APP_ROOT.'backend/products/success');
+        // exit();
+      }else{
+        $this -> view -> data['errors'] = $error;
+      }
 
-      header('Location:'.APP_ROOT.'backend/products/success');
-      exit();
     }
   }
 
@@ -121,8 +126,6 @@ class products extends controller{
       }
 
       $result = $this -> model -> saveNewProduct();
-
-      // var_dump($result);
 
       header('Location:'.APP_ROOT.'backend/products/success');
       exit();
