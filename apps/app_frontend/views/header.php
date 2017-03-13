@@ -33,8 +33,11 @@
         <li><a href="<?php echo APP_ROOT; ?>/about">Über uns</a></li>
         <li><a href="<?php echo APP_ROOT; ?>/abos">Abos</a></li>
         <li><a href="<?php echo APP_ROOT; ?>/products">Produkte</a></li>
-        <li><a href="<?php echo APP_ROOT; ?>/login">Login</a></li>
-        <li><a href="<?php echo APP_ROOT; ?>/register">Registrieren</a></li>
+        <?php
+        foreach($nav as $key => $val){
+              echo "<li><a href=\"" .APP_ROOT. "$key\" class= \"subnav-element-a \">$val</a></li>";
+        }
+        ?>
       </ul>
     </div>
     <div class="header-logo">

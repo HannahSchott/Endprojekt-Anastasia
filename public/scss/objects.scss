@@ -666,7 +666,7 @@ box-sizing: border-box;
 
  .profile{
 
-   margin: 80px 200px;
+   margin:2em 2em;
 }
 
 .profile_welcome{
@@ -688,13 +688,21 @@ box-sizing: border-box;
 .abo_progress{
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   color: #fff;
+  //
+  // margin-top: 20px;
+  padding: 1.5em 1.5em;
 
-  margin-top: 20px;
 
-  background-color: map-get($colors, purple);
   li{
+    text-align: center;
+    min-width: 9em;
+    min-height: 1em;
+
+    box-sizing: border-box;
+    background-color: map-get($colors, purple);
     padding: 15px 30px;
     border: 1px solid map-get($colors, lightPurple);
   }
@@ -708,7 +716,7 @@ box-sizing: border-box;
     background-color: map-get($colors, orange);
     background-image: url('../img/check.png');
     background-repeat: no-repeat;
-    background-position: 88px;
+    background-position: 6.5em;
     background-size: 20px;
 
     padding-right: 45px;
@@ -717,8 +725,6 @@ box-sizing: border-box;
 
 
 .profile_adress{
-
-  margin-right: 100px;
   margin-bottom: 30px;
 
   ul{
@@ -803,14 +809,22 @@ box-sizing: border-box;
 
 .register-wrapper{
 
+// display: flex;
+// align-items: flex-start;
+// flex-direction: column;
+//
+// margin: 100px 200px;
+// padding: 70px;
+//
+// box-shadow: $shadow;
+max-width: 80vw;
 display: flex;
 align-items: flex-start;
 flex-direction: column;
-
-margin: 100px 200px;
-padding: 70px;
-
-box-shadow: $shadow;
+margin: 2em;
+padding: 2em;
+box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.5);
+box-sizing: border-box;
 
 h2{
   margin-bottom: 40px;

@@ -512,7 +512,7 @@ ul {
     cursor: pointer; }
 
 .profile {
-  margin: 80px 200px; }
+  margin: 2em 2em; }
 
 .profile_welcome {
   width: 90%; }
@@ -530,11 +530,16 @@ ul {
 
 .abo_progress {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   color: #fff;
-  margin-top: 20px;
-  background-color: #89145C; }
+  padding: 1.5em 1.5em; }
   .abo_progress li {
+    text-align: center;
+    min-width: 9em;
+    min-height: 1em;
+    box-sizing: border-box;
+    background-color: #89145C;
     padding: 15px 30px;
     border: 1px solid #8C466D; }
   .abo_progress a {
@@ -544,12 +549,11 @@ ul {
     background-color: #F05014;
     background-image: url("../img/check.png");
     background-repeat: no-repeat;
-    background-position: 88px;
+    background-position: 6.5em;
     background-size: 20px;
     padding-right: 45px; }
 
 .profile_adress {
-  margin-right: 100px;
   margin-bottom: 30px; }
   .profile_adress ul {
     margin-bottom: 20px; }
@@ -599,12 +603,14 @@ ul {
   color: #F05014; }
 
 .register-wrapper {
+  max-width: 80vw;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  margin: 100px 200px;
-  padding: 70px;
-  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.5); }
+  margin: 2em;
+  padding: 2em;
+  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box; }
   .register-wrapper h2 {
     margin-bottom: 40px; }
 
@@ -1288,7 +1294,15 @@ footer {
   .user-comment {
     width: 67vw; }
   .product-detail_comments {
-    width: 100vw; } }
+    width: 100vw; }
+  .order-form {
+    box-shadow: 0px 0px 0px #fff;
+    padding: 1em;
+    max-width: 80%; }
+  .register-wrapper {
+    box-shadow: 0px 0px 0px #fff; }
+    .register-wrapper input {
+      width: 63vw; } }
 
 @media screen and (max-width: 330px) {
   .about-text {

@@ -225,7 +225,7 @@ autoAlpha: 1
 //  Productsorting add Class
 
   $('.categorie').on('click', function(event){
-
+    
     $(this).addClass("sorting-selected");
 
   });

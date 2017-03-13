@@ -12,11 +12,11 @@
 
   <!-- <li class="sorting-selected"><a href="#">Augen</a></li> -->
   <div class="products-dropdown">
-    <select>
+    <!-- <select>
       <option value="ranking">sortieren nach</option>
       <option value="ranking">Bewertung</option>
       <option value="price">Preis</option>
-    </select>
+    </select> -->
   </div>
 </div>
 
