@@ -1,6 +1,6 @@
 <?php
 
-class anastasia extends controller{
+class anastasia extends user_controller{
 
     public function index()
     {

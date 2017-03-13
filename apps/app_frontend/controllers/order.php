@@ -1,7 +1,7 @@
 <?php
 
 
-class order extends controller{
+class order extends user_controller{
 
   public function index($abo_id)
   {

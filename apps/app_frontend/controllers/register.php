@@ -1,6 +1,6 @@
 <?php
 
-class register extends controller{
+class register extends guest_controller{
 
   public function index(){
 

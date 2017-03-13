@@ -1,6 +1,6 @@
 <?php
 
-class profile extends controller{
+class profile extends user_controller{
 
     public function index()
     {

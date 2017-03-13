@@ -1,6 +1,6 @@
 <?php
 
-class login extends controller{
+class login extends guest_controller{
 
     public function index()
     {

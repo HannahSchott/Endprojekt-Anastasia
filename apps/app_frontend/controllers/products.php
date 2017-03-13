@@ -58,7 +58,7 @@ class products extends controller{
           }
           elseif(isset($this->view->data['errors']) && count($this->view->data['errors']) > 0){
               return false;
-            
+
           }else{
             $this -> model -> setComment($product_id, $_POST['comment']);
             //Headerlocation

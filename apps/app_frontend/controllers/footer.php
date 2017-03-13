@@ -39,7 +39,7 @@ class footer extends controller{
     }else {
       $messageExists = $this -> model -> checkIfMessageExists($_POST['message']);
       if($messageExists == false){
-      
+
         $this -> model -> setContact($_POST['email'], $_POST['subject'], $_POST['message']);
         $message['success'] = "Die Nachricht wurde erfolgreich abgeschickt.";
       }else{
