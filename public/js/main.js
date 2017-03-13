@@ -3,10 +3,7 @@
 //MENUE BUTTON TEST
 $(document).ready(function () {
 
-//   if(window.innerHeight > window.innerWidth){
-//     alert("Please use Landscape!");
-// }
-
+  var url = window.location.protocol + "//" + window.location.host;
 
   var bars = $('.menu-bar');
   var menu = $('.mobile-menu');
@@ -62,7 +59,7 @@ button.on('click', function(event){
   console.log('button');
   $.ajax({
     type:"POST",
-    url:"http://localhost:8888/Endprojekt-Anastasia/anastasia/getPageContent/2",
+    url: url+"/getPageContent/2",
   }).done(function(data, textStatus, jqXhr){
     var bookwrapper = $('.book-wrapper');
     var databookwrapper = $(data).find('.book-wrapper');
@@ -132,7 +129,7 @@ button.on('click', function(event){
 
     $.ajax({
       type: 'POST',
-      url: 'http://localhost:8888/Endprojekt-Anastasia/anastasia/getPageContent/' + page_id,
+      url: url+'/getPageContent/' + page_id,
       data: {'images': current_answers},
       dataType: "html",
       success: function (data) {
@@ -202,12 +199,12 @@ $(document).on('click', finishButton, function(event){
 
   $.ajax({
     type: "POST",
-    url: 'http://localhost:8888/Endprojekt-Anastasia/anastasia/setAnswers/',
+    url: url+'/anastasia/setAnswers/',
     data: {'answers': answers, 'count' : count},
     success: function (data,status) {
       console.log(data);
       localStorage.clear();
-      window.location.href = 'http://localhost:8888/Endprojekt-Anastasia/home';
+      window.location.href = url+'/home';
     }
   });
 
@@ -244,7 +241,7 @@ autoAlpha: 1
 
     $.ajax({
       type:"POST",
-      url:'http://localhost:8888/Endprojekt-Anastasia/footer/setNewsletter',
+      url:url+'/footer/setNewsletter',
       data:{email:email},
       success: function(data){
         var messages = JSON.parse(data);
@@ -274,7 +271,7 @@ autoAlpha: 1
 
     $.ajax({
       type:"POST",
-      url:'http://localhost:8888/Endprojekt-Anastasia/footer/setContact',
+      url:url+'/footer/setContact',
       data:{email:email, subject:subject, message:message},
       success: function(data){
         console.log(data);
@@ -314,7 +311,7 @@ autoAlpha: 1
 
       $.ajax({
         type: "POST",
-        url:"http://localhost:8888/Endprojekt-Anastasia/backend/order/SetOrderStatus/"+status,
+        url:url+"/backend/order/SetOrderStatus/"+status,
         data:{'order_id':order_id},
         success: function(data, status){
 
@@ -342,14 +339,16 @@ autoAlpha: 1
     var div = current_crown.parent();
     var product_id = div.attr('id');
 
-
+    //URL austauschen!!
       $.ajax({
         type: "POST",
-        url:"http://localhost:8888/Endprojekt-Anastasia/profile/setRating/"+product_id,
+        // url:url+"/profile/setRating/"+product_id,
+        url: "http://localhost:8888/Endprojekt-Anastasia/profile/setRating/"+product_id,
         data:{'rating':rating},
         success: function(data, status){
-          console.log(status);
-          console.log(data);
+          // console.log(status);
+          // console.log(data);
+          //
         }
       });
 

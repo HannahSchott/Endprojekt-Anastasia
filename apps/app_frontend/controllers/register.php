@@ -24,8 +24,8 @@ class register extends guest_controller{
 
       // Validation
       $val = new validator();
-      $val -> val($_POST['f-firstname'], "Vorname", true, "text", 3, 20);
-      $val -> val($_POST['f-lastname'], "Nachname", true, "text", 3, 20);
+      $val -> val($_POST['f-firstname'], "Vorname", true, "text", 2, 20);
+      $val -> val($_POST['f-lastname'], "Nachname", true, "text", 2, 20);
       $val -> val($_POST['f-email'], "E-Mail", true, "email");
       $val -> val($_POST['f-pw'], "Passwort", true, "password", 5, 20);
       //birthday

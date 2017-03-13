@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+  if(window.innerHeight > window.innerWidth){
+      alert("Bitte verwende Landscape!");
+  }
   TweenLite.fromTo(".welcome-text", 1,
 
   {

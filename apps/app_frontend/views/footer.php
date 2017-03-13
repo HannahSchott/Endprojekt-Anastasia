@@ -59,13 +59,17 @@ Hast du eine Frage?
 
 
 <?php
-if($_GET == null || $_GET["url"] == 'home'){
-  echo "<script src=\"" . APP_ROOT . "public/js/home-animation.js\"></script>";
+
+if(isset($_GET['url'])){
+  if($_GET == null || $_GET["url"] == 'home'){
+    echo "<script src=\"" . APP_ROOT . "public/js/home-animation.js\"></script>";
+  }
+
+  if($_GET['url'] == 'anastasia/'){
+      echo "<script src=\"" . APP_ROOT . "public/js/anastasia-animation.js\"></script>";
+  }
 }
 
-if($_GET['url'] == 'anastasia/'){
-    echo "<script src=\"" . APP_ROOT . "public/js/anastasia-animation.js\"></script>";
-}
 ?>
 <script src="<?php echo  APP_ROOT ?>/public/js/main.js"></script>
 
