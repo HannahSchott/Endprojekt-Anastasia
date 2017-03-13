@@ -1,6 +1,6 @@
 <?php
 
-class users extends controller{
+class users extends admin_controller{
 
   public function index()
   {

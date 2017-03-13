@@ -1,6 +1,6 @@
 <?php
 
-class siteerror extends controller{
+class siteerror extends admin_controller{
 
     public function index()
     {

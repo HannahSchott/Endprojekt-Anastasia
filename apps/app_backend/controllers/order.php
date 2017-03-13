@@ -1,6 +1,6 @@
 <?php
 
-class order extends controller{
+class order extends admin_controller{
   public function index()
   {
 

@@ -1,6 +1,6 @@
 <?php
 
-class contact extends controller{
+class contact extends admin_controller{
   public function index(){
 
     $this -> view -> data['contacts'] = $this -> model -> getContacts();

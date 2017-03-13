@@ -1,6 +1,6 @@
 <?php
 
-class products extends controller{
+class products extends admin_controller{
 
   public function index()
   {
