@@ -1,7 +1,13 @@
 <main>
-
   <div class="order-form">
     <h2>Bestellen</h2>
+    <?php if($abo_id == 1) :?>
+    <h4>(3-Monats-Abo)</h4>
+    <?php elseif($abo_id == 2) :?>
+    <h4>(6-Monats-Abo)</h4>
+    <?php elseif($abo_id == 3) :?>
+    <h4>(1-Jahres-Abo)</h4>
+    <?php endif;?>
     <?php if( isset($errors) && count($errors) > 0 ) {
       echo '<div class="errors">';
       foreach($errors as $error):

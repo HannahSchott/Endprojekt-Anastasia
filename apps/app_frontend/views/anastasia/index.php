@@ -1,4 +1,10 @@
 <main class="main_book">
+  <?php if(sessions::get('order') == false):?>
+    <div class="backend-wrapper">
+        <p>Bitte Fülle zuerst das <a class="header-link" href="<?php echo APP_ROOT;?>order/index/3">Bestllformular</a> aus um den Test zu machen</p>
+    </div>
+
+  <?php else:?>
   <?php if($page_id > 1) :?>
   <div class="button-wrapper">
       <a href="<?php echo APP_ROOT;?>anastasia/getPageContent/<?php echo $page_id - 1;?>" class="button button-back"  id=<?php echo $page_id -1; ?>>zrück</a>
@@ -50,4 +56,5 @@
     </div>
     <img src="<?php echo APP_ROOT; ?>/public/img/Book.png" alt="" class="book">
   </div>
+<?php endif;?>
 </main>

@@ -13,6 +13,7 @@ class order extends user_controller{
     $this -> view -> data['token'] = $token;
     sessions::set('form-token', $token);
 
+    $this -> view -> data['abo_id'] = $abo_id;
     $this -> view -> render('order/index', $this -> view -> data);
   }
 
@@ -41,6 +42,7 @@ class order extends user_controller{
         $setOrder = $this -> model -> setOrder($abo_id);
         // var_dump($setOrder);
         if($setOrder == true){
+          sessions::set('order',true);
           header('Location:'.APP_ROOT.'anastasia');
           exit();
         }else{
