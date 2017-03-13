@@ -343,7 +343,7 @@ ul {
       font-family: "Arima Madurai";
       font-size: 10pt;
       box-sizing: border-box;
-      width: 50vw;
+      width: 7em;
       padding: 8px 30px 8px 30px; }
       .products-sorting .product-categries .categorie.sorting-selected {
         background-color: #F05014; }
@@ -376,6 +376,7 @@ ul {
   flex-wrap: wrap;
   justify-content: space-around;
   width: 80%;
+  box-sizing: border-box;
   margin-top: 50px;
   padding: 0px 50px; }
 
@@ -1273,7 +1274,9 @@ footer {
       margin: 2em; }
   .products-dropdown {
     display: flex;
-    justify-content: center; } }
+    justify-content: center; }
+  .products-sorting .product-categries .categorie {
+    width: 50vw; } }
 
 @media screen and (max-width: 450px) {
   .mobile-logo {
