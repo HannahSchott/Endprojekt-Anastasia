@@ -34,22 +34,10 @@
         <p>Diese Produkt hat noch keine Bewertungen</p>
       <?php else:?>
         <img src="<?php echo APP_ROOT?>public/img/crowns/<?php echo $product['comments_rating']?>.png" alt="crowns"/>
-      <?php endif;?>  
+      <?php endif;?>
     </div>
     <h3><?php echo $product['product_name']; ?></h3>
   </div>
 <?php endforeach; ?>
 </div>
-
-<div class="products-pagination">
-  <ol>
-    <li><a href="#">Zurück</a></li>
-    <li class="products-pagination--active">1</li>
-    <li>2</li>
-    <li>3</li>
-    <li><a href="#">Weiter</a></li>
-  </ol>
-</div>
-
-
 </main>

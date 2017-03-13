@@ -11,7 +11,7 @@
           <p>Diese Produkt hat noch keine Bewertungen</p>
         <?php else:?>
           <img src="<?php echo APP_ROOT?>public/img/crowns/<?php echo $product['comments_rating']?>.png" alt="crowns"/>
-        <?php endif;?> 
+        <?php endif;?>
 
       </div>
 
@@ -39,6 +39,11 @@
   <?php endforeach;?>
 
     <div class="user-comment">
+      <?php
+      $user_id = sessions::get('uid');
+      if(!isset($user_id) || $user_id == false):?>
+      <p><a class="header-link" href="<?php echo APP_ROOT?>login">Loge dich bitte ein </a>um ein Kommentar zu verfassen.</p>
+    <?php else:?>
       <h4>Dein Kommentar</h4>
       <form class="comment-form" method="post">
         <?php if( isset($errors) && count($errors) > 0 ) {
@@ -55,7 +60,8 @@
         <label for="comment-submit"></label>
         <button type="submit" class="button-comment" name="button">kommentieren</button>
       </form>
-
+    <?php endif;?>
     </div>
+
   </div>
 </main>
