@@ -18,11 +18,11 @@
           <div class="product-image">
           <a href="<?php echo APP_ROOT?>products/detail/<?php echo $product['id']; ?>"><img src="<?php echo APP_ROOT?>public/img/productimages/<?php echo $product['main_img']; ?>" alt="<?php echo $product['slug']; ?>"/></a>
           </div>
-
+          <?php if(isset($product['comments_rating']) && $product['comments_rating'] != ''): ?>
           <div class="featrued_products-crowns">
             <img src="<?php echo APP_ROOT?>public/img/crowns/<?php echo $product['comments_rating']; ?>.png" alt="crowns"/>
           </div>
-
+        <?php endif; ?>
           <h3><?php echo $product['name']; ?></h3>
 
         </div>
