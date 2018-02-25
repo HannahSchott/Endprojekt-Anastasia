@@ -25,7 +25,7 @@ class products_model extends model{
 
   public function getProductsByCategorie($categorie_id)
   {
-    $res = $this -> db -> query("SELECT products.name as product_name, products.slug, products.main_img, products.comments_rating, categories.name FROM products LEFT JOIN categories ON products.`categories-id` = categories.id WHERE products.`categories-id` = $categorie_id");
+    $res = $this -> db -> query("SELECT products.id, products.name as product_name, products.slug, products.main_img, products.comments_rating, categories.name FROM products LEFT JOIN categories ON products.`categories-id` = categories.id WHERE products.`categories-id` = $categorie_id");
 
     return $res -> fetch_all(MYSQLI_ASSOC);
 
@@ -100,7 +100,6 @@ class products_model extends model{
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-
     if(isset($_FILES) && $_FILES["fileToUpload"]["size"] != 0){
       $error = [];
       $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -136,10 +135,11 @@ class products_model extends model{
 
         // "Das Bild ". basename( $_FILES["fileToUpload"]["name"]). " wurde erfolgreich hochgeladen.";
         }else{
-          return $error;
+          return $result['error'] = $error;
             // $error[] = "Es gab leider einen Fehler.";
         }
       }
+      
     }else{
       $res = $this -> db -> query("UPDATE products SET name = '$name', slug = '$slug' , description = '$description', product_link ='$link',price= '$price', `categories-id` = '$categorie_id',month_id ='$month_id' WHERE id = '$product_id'");
     }
@@ -207,17 +207,20 @@ class products_model extends model{
           $res = $this -> db -> query("INSERT INTO products (name,slug,description,main_img,product_link,price,`categories-id`,month_id,is_active)  VALUES ('$name','$slug' ,'$description','$filename', '$link','$price','$categorie_id', '$month_id' ,$is_active)");
         // "Das Bild ". basename( $_FILES["fileToUpload"]["name"]). " wurde erfolgreich hochgeladen.";
         }else{
-          return $error;
+          $result['error'] = $error;
+          return $result;
             // $error[] = "Es gab leider einen Fehler.";
         }
       }
+    } else{
+      $result['error'][] = 'Bitte lade ein Produktbild hoch';
+       return $result;
     }
   }
 
   public function checkIfCommentExist($comment)
   {
     $user_id = sessions::get('uid');
-    var_dump(sessions::get('uid'));
     $res = $this -> db -> query("SELECT content FROM comments WHERE `user-id` = $user_id");
 
     $comments = $res -> fetch_all(MYSQLI_ASSOC);

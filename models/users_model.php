@@ -6,7 +6,7 @@ class users_model extends model{
   public function getAllUsers()
   {
 
-    $res = $this -> db -> query("SELECT users.id,users.lastname, users.payment, users.`abo-id`, users.`abo-timestamp`, users.user_group, `box-type`.name as box_type, users.created_at, users.is_active, abos.name as abo_name  FROM users LEFT JOIN abos ON users.`abo-id` = abos.id  LEFT JOIN `box-type` ON users.`box-type_id` = `box-type`.id WHERE is_active = '1'");
+    $res = $this -> db -> query("SELECT users.id,users.lastname, users.payment, users.`abo-id`, users.`abo-timestamp`, users.user_group, `box-type`.name as box_type, users.created_at, users.is_active, abos.name as abo_name  FROM users LEFT JOIN abos ON users.`abo-id` = abos.id  LEFT JOIN `box-type` ON users.`box-type_id` = `box-type`.id WHERE is_active = '1' ORDER BY users.created_at DESC");
 
     return $res -> fetch_all(MYSQLI_ASSOC);
   }
@@ -50,7 +50,7 @@ class users_model extends model{
       $user_group = $_POST['usergroup'];
 
       $this -> updateOrder($user_id);
-      //Wenn Zahlungsmethode geänder wurde
+      //Wenn Zahlungsmethode geändert wurde
       if(isset($_POST['payment'])){
         $payment = $_POST['payment'];
         $res = $this -> db -> query("UPDATE users SET lastname = '$lastname', firstname = '$firstname', birthday = '$birthday', adress = '$data', payment = '$payment',`abo-id` = $abo_id,email = '$email', adress = '$data', `newsletter` = '$newsletter', user_group = '$user_group' WHERE id = '$user_id'");

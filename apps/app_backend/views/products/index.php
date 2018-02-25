@@ -17,7 +17,7 @@
       <tbody>
         <?php foreach($products as $product):?>
         <tr>
-          <th><img src="<?php echo APP_ROOT?>public/img/productimages/<?php echo $product['main_img'];?>" alt="<?php echo $porduct['slug'];?>"></th>
+          <th><img src="<?php echo APP_ROOT?>public/img/productimages/<?php echo $product['main_img'];?>" alt="<?php echo $product['slug'];?>"></th>
           <th><?php echo $product['product_name'];?></th>
           <th><?php echo $product['price'];?>€</th>
           <th><?php echo $product['categorie_name'];?></th>

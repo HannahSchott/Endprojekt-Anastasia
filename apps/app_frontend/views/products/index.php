@@ -23,7 +23,6 @@
 
 <div class="products">
   <?php
-  // var_dump($products);
   foreach($products as $product):?>
   <div class="featured_products-product">
     <div class="product-image">

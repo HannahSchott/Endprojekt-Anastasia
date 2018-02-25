@@ -37,7 +37,7 @@
             <th>-</th>
             <?php endif;?>
             <?php if($user['abo-timestamp'] != null):?>
-            <th><?php echo date('Y.m.d', intval($user['abo-timestamp']))?></th>
+            <th><?php echo date('d.m.Y', intval($user['abo-timestamp']))?></th>
             <?php else:?>
             <th>-</th>
             <?php endif;?>

@@ -21,27 +21,27 @@
       <input type="hidden" name="token" value="<?php echo $token; ?>">
       <div class="form-group" id="f-adress">
         <label for="adress">Adresse</label>
-        <input type="text" id="adress" name="adress" value="">
+        <input type="text" id="adress" name="adress" value="<?= (isset($_POST['adress']) && ($_POST['adress'] != '')) ? $_POST['adress'] : '' ?>">
       </div>
 
       <div class="form-group">
         <label for="number">Nummer</label>
-        <input type="number" id="number" name="number" value="">
+        <input type="number" id="number" name="number" value="<?= (isset($_POST['number']) && ($_POST['number'] != '')) ? $_POST['number'] : '' ?>">
       </div>
 
       <div class="form-group">
         <label for="zip">PLZ</label>
-        <input type="number" id="zip" name="zip" value="">
+        <input type="number" id="zip" name="zip" value="<?= (isset($_POST['zip']) && ($_POST['zip'] != '')) ? $_POST['zip'] : '' ?>">
       </div>
 
       <div class="form-group">
         <label for="city">Stadt</label>
-        <input type="text" id="city" name="city" value="">
+        <input type="text" id="city" name="city" value="<?= (isset($_POST['city']) && ($_POST['city'] != '')) ? $_POST['city'] : '' ?>">
       </div>
 
       <div class="form-group">
         <label for="country">Land</label>
-        <input type="text" id="country" name="country" value="">
+        <input type="text" id="country" name="country" value="<?= (isset($_POST['country']) && ($_POST['country'] != '')) ? $_POST['country'] : '' ?>">
       </div>
 
       <div class="payment-wrapper">

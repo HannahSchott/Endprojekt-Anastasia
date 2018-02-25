@@ -16,24 +16,25 @@
 
       <div class="form-group">
         <label for="f-firstname">Vorname</label>
-        <input type="text" name="f-firstname" id="f-firstname" class="form-control ">
+
+        <input type="text" name="f-firstname" id="f-firstname" value="<?= (isset($_POST['f-firstname']) && ($_POST['f-firstname'] != '')) ? $_POST['f-firstname'] : '' ?>" class="form-control ">
       </div>
 
       <div class="form-group">
         <label for="f-lastname">Nachname</label>
-        <input type="text" name="f-lastname" id="f-lastname" class="form-control ">
+        <input type="text" name="f-lastname" id="f-lastname" value="<?= (isset($_POST['f-lastname']) && ($_POST['f-lastname'] != '')) ? $_POST['f-lastname'] : '' ?>" class="form-control ">
       </div>
 
 
       <div class="form-group">
         <label for="f-email">Emailadresse</label>
-        <input type="email" name="f-email" id="f-email" class="form-control ">
+        <input type="email" name="f-email" id="f-email" value="<?= (isset($_POST['f-email']) && ($_POST['f-email'] != '')) ? $_POST['f-email'] : '' ?>" class="form-control ">
       </div>
 
 
       <div class="form-group">
         <label for="f-birthday">Geburtsdatum(TT.MM.YY)</label>
-        <input type="date" name="f-birthday" id="f-birthday" class="form-control ">
+        <input type="date" name="f-birthday" id="f-birthday" value="<?= (isset($_POST['f-birthday']) && ($_POST['f-birthday'] != '')) ? $_POST['f-birthday'] : '' ?>" class="form-control ">
       </div>
 
 

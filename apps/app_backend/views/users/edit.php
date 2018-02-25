@@ -78,8 +78,11 @@
           </div>
         <?php endif;?>
         <div class="form-group">
-          <label for="usergoup">Usergruppe(1 = Kunde, 2= Admin)</label>
-          <input type="number" name="usergroup" value="<?php echo $user['user_group']?>">
+          <label for="usergroup">Usergruppe</label>
+          <select name="usergroup">
+            <option value="1" <?= isset($user['user_group']) && $user['user_group'] == '1' ? 'selected' : '' ?>>Kunde</option>
+            <option value="2" <?= isset($user['user_group']) && $user['user_group'] == '2' ? 'selected' : '' ?>>Admin</option>
+          </select>
         </div>
         <div class="form-group">
           <input class="backend-button" type="submit" name="save" value="speichern">

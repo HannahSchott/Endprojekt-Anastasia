@@ -1,4 +1,4 @@
-<main class="profile">
+Ï<main class="profile">
   <div class="profile_welcome">
     <h3>Hallo, <strong class="profile_strong"><?php echo sessions::get('firstname'); ?>!</strong></h2>
     <p>In deinem Profil kannst du deine Kontaktdaten aktualisieren, deine Bestellungen
@@ -38,14 +38,11 @@
 
 
   <div class="profile_products">
-
+    <?php if($user['adress'] != 0 && (isset($products) && $products != '')) : ?>
     <h3>Deine <strong class="profile_strong"><?php echo date('F');?></strong>-Box</h3>
-    <?php if($user['adress'] != 0):?>
     <p>Hier kannst du die Produkte aus deiner letzten Box Bewerten und ein Kommentar dazu schreiben.</p>
     <div class="profile_products-wrapper">
-
       <?php foreach($products as $product):?>
-
       <div class="featured_products-product">
         <div class="product-image">
         <a href="<?php echo APP_ROOT?>products/detail/<?php echo $product['id']?>"><img src="<?php echo APP_ROOT;?>public/img/productimages/<?php echo $product['main_img']; ?>" alt="<?php echo $product['slug']; ?>"/></a>
@@ -64,10 +61,8 @@
         <h3><?php echo $product['name']; ?></h3>
         <p><a href="<?php echo APP_ROOT?>products/detail/<?php echo $product['id']?>" class="product_comment">kommentiern</a></p>
       </div>
-    <?php endforeach; ?>
-
+      <?php endforeach; ?>
     </div>
-  <?php else : echo ("Hier wäre die Produkt vorschau.")?>
   <?php endif; ?>
   </div>
 

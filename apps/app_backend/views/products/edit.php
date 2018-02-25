@@ -1,9 +1,6 @@
 <main>
   <div class="backend-wrapper">
     <h3>Produkt bearbeiten</h3>
-
-
-<!--  name, beschreibung, bild, link, preis, monat, categorie-->
     <div class="backend-form">
       <form class="" method="post" enctype="multipart/form-data">
         <?php if( isset($errors) && count($errors) > 0 ) {

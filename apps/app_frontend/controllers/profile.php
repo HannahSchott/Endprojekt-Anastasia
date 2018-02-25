@@ -18,10 +18,9 @@ class profile extends user_controller{
         $user['adress'] = 0;
       }
 
-      $this -> view -> data['user'] = $user;
+      $this->view->data['user'] = $user;
 
-      $products = $this -> model -> getCurrentProducts();
-
+      $products = $this->model->getCurrentProducts();
       foreach($products as $key => $product){
         $rating = $this -> model ->  getCurrentRating($product['id']);
         $rated_by = $rating['rated_by'];
@@ -36,16 +35,13 @@ class profile extends user_controller{
             $products[$key]['commented'] = "Dieses Produkt hast du schon Bewertet";
           }
         }
-
-        if($key == count($products) -1){
-
-          $this -> view -> data['products'] = $products;
-          $this -> view -> render('profile/index', $this -> view -> data);
+        if($key == count($products) - 1){
+          $this->view->data['products'] = $products;
+          
         }
       }
 
-
-
+      $this->view->render('profile/index', $this->view->data);
     }
 
     public function edit($user_id)
@@ -175,8 +171,7 @@ class profile extends user_controller{
       $new_count = floatval($count_db + 1);
 
       $new_rating = floatval($old_rating + $user_rating[1]);
-      //
-      // var_dump($old_rating, $user_rating[0]);
+    
       $rating = $new_rating / $new_count;
 
 

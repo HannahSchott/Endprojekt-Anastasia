@@ -69,6 +69,7 @@ class users extends admin_controller{
       $val -> val($_POST['usergroup'], "Usergruppe", true, "number", 1);
 
     }
+
     if(count($val -> getErrors()) > 0) {
       $this -> view -> data['errors'] = $val -> getErrors();
     }else{

@@ -19,12 +19,12 @@
 
             <div class="form-group">
               <label for="f-email">Emailadresse</label>
-              <input type="email" name="f-email" id="f-email" placeholder="Emailadresse" class="form-control ">
+              <input type="email" name="f-email" id="f-email" placeholder="Emailadresse" value="<?= (isset($_POST['f-email']) && ($_POST['f-email'] != '')) ? $_POST['f-email'] : '' ?>" class="form-control ">
             </div>
 
             <div class="form-group">
               <label for="f-pw">Passwort</label>
-              <input type="password" name="f-pw" id="f-pw" placeholder="Passwort" class="form-control ">
+              <input type="password" name="f-pw" id="f-pw" placeholder="Passwort" value="<?= (isset($_POST['f-pw']) && ($_POST['f-pw'] != '')) ? $_POST['f-pw'] : '' ?>" class="form-control ">
             </div>
 
             <div class="form-group">

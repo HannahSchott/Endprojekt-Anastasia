@@ -125,11 +125,14 @@ class products extends admin_controller{
       if(isset($this->view->data['errors']) && count($this->view->data['errors']) > 0){
           return false;
       }
-
       $result = $this -> model -> saveNewProduct();
-
-      header('Location:'.APP_ROOT.'backend/products/success');
-      exit();
+      if(isset($result['error']) && $result['error'] != '') {
+        $this->view->data['errors'] = $result['error'];
+      } else {
+        header('Location:'.APP_ROOT.'backend/products/success');
+        exit();
+      }
+      
     }
   }
 

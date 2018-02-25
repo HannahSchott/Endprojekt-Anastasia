@@ -14,12 +14,10 @@ class anastasia extends user_controller{
     public function getPageContent($page_id)
     {
       $content = $this -> model -> getPageContent($page_id);
-
-      $this -> view -> data['page_id']=$page_id;
-      $this -> view -> data['question'] = $content['question'];
-      $this -> view -> data['images'] = $content['answer_imgs'];
-      $this -> view -> data['answers'] = $content['answer_text'];
-
+      $this->view->data['page_id']=$page_id;
+      $this->view->data['question'] = $content['question'];
+      $this->view->data['images'] = $content['answer_imgs'];
+      $this->view->data['answers'] = $content['answer_text'];
       $this -> view -> render('anastasia/index', $this -> view -> data, $includeAll = 'anastasia');
     }
 
@@ -27,5 +25,4 @@ class anastasia extends user_controller{
 
       return $this -> model -> setAnswers();
     }
-
 }

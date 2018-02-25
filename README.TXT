@@ -1,12 +1,16 @@
-Kernfeature:
+This was the Project I made for my Diploma. It is the first thing I have ever coded. When I made this I was only coding for a year, so it is not perfect but it is my baby. 
 
-Der AJAX-call um die Antworten in eine SESSION zu schreiben funktioniert noch nicht.
-Daher schreibt er es auch noch nicht in die DB aber die Funktion gibt es schon.
+The heart of this website is the order process of the Boxes because you will have to answer a few questions before you can recieve the box that is perfect for you. I made all the graphics on my own.
 
-Ich würde gerne noch den next/back button disabeln wenn man ihn nicht klicken soll (Die Frage noch nicht beantwortet, das Ende erreicht) bzw. eine Umblätter animation machen on scroll.
+To run it you need to:
 
-Responsive würde ich die device orientation abfragen und nur im Landscape zu verfügung stellen. 
+- Insert DB dump
+- Configuerade config.php and apps.php
+- Set url in public/js/main.js
 
-Außerdem soll die angeklickte Antwort markiert werden.
+The default admin account is:
 
+admin@admin.at
+Admin123
 
+You can access the admin interface with backend/home.

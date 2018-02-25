@@ -3,7 +3,7 @@
 //MENUE BUTTON TEST
 $(document).ready(function () {
 
-  var url = window.location.protocol + "//" + window.location.host;
+  var url = "http://localhost:8888/Endprojekt-Anastasia";
 
   var bars = $('.menu-bar');
   var menu = $('.mobile-menu');
@@ -52,33 +52,20 @@ $(document).ready(function () {
 
 
   //Weiter Button Welcome text
-var button = $('.welcome-text').find('a');
+  var button = $('.welcome-text').find('a');
 
-button.on('click', function(event){
-  event.preventDefault();
-  console.log('button');
-  $.ajax({
-    type:"POST",
-    url: url+"/getPageContent/2",
-  }).done(function(data, textStatus, jqXhr){
-    var bookwrapper = $('.book-wrapper');
-    var databookwrapper = $(data).find('.book-wrapper');
-
-    var buttons = $('.button-wrapper');
-    var databuttons = $(data).find('.button-wrapper');
-    var main = $('.main_book');
-
-    main.before(databuttons);
-    bookwrapper.replaceWith(databookwrapper);
-
-  });
-
-});
   //Next Button
   var ButtonNext = '.button-next';
-
+  var page_id = $('.button-next').attr('id');
+  if(page_id < 7) {
+    $(ButtonNext).addClass('disabled');
+  }
+  
   $(document).on('click', ButtonNext, function(event){
-    var page_id = $(this).attr('id');
+      var page_id = $('.button-next').attr('id');
+  if(page_id < 7) {
+    $(ButtonNext).addClass('disabled');
+  }
     getNewQuestion(page_id);
   });
 
@@ -129,7 +116,7 @@ button.on('click', function(event){
 
     $.ajax({
       type: 'POST',
-      url: url+'/getPageContent/' + page_id,
+      url: url+'/anastasia/getPageContent/' + page_id,
       data: {'images': current_answers},
       dataType: "html",
       success: function (data) {
@@ -145,6 +132,7 @@ button.on('click', function(event){
 
         var back = $('<a>').append(data).find('.button-back').attr('id');
         $('.button-back').attr('id', back);
+
       }
     });
   }
@@ -184,6 +172,8 @@ button.on('click', function(event){
 
     $('.answer_img__selected').removeClass('answer_img__selected');
     img.addClass('answer_img__selected');
+
+    $(ButtonNext).removeClass('disabled');
   });
 
 
@@ -213,8 +203,7 @@ $(document).on('click', finishButton, function(event){
 
 // Animationen ?
 var question = $('.question-text');
-
-question.css('border', '1px solid red');
+;
 TweenLite.fromTo(question, 1.0,
 {
   autoAlpha: 0,
@@ -225,7 +214,7 @@ autoAlpha: 1
 //  Productsorting add Class
 
   $('.categorie').on('click', function(event){
-    
+
     $(this).addClass("sorting-selected");
 
   });
@@ -339,16 +328,15 @@ autoAlpha: 1
     var div = current_crown.parent();
     var product_id = div.attr('id');
 
-    //URL austauschen!!
+
       $.ajax({
         type: "POST",
-        // url:url+"/profile/setRating/"+product_id,
-        url: "http://localhost:8888/Endprojekt-Anastasia/profile/setRating/"+product_id,
+        url: url+"/profile/setRating/"+product_id,
         data:{'rating':rating},
-        success: function(data, status){
-          // console.log(status);
-          // console.log(data);
-          //
+        success: function(datas){
+          div.fadeOut(function(){
+           div.text('Danke für deine Bewertung').css('color','green').fadeIn(); 
+          });
         }
       });
 
